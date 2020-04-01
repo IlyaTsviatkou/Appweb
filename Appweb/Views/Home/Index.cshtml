@@ -1,0 +1,69 @@
+﻿@model Appweb.ViewModels.ItemTagCol
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager
+@inject UserManager<User> userManager
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.colID = "";
+    ViewBag.text = "";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="indexout1">
+        <h5>@User.Identity.Name</h5>
+
+
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="LogOut" />
+        </form>
+    </div>
+    <div class="indexout2">
+        <h5>THE BIGGEST COLLECTIONS</h5>
+
+        @foreach (var mmodel in Model.Collection)
+        {
+            var a = (await userManager.FindByIdAsync(mmodel.UserID)).UserName;
+            if (mmodel.Bookb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="BookAdd" asp-route-id="@mmodel.CollectionID">@mmodel.Name</a>
+            }
+
+            if (mmodel.Phoneb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PhoneAdd" asp-route-id="@mmodel.CollectionID">@mmodel.Name</a>
+            }
+            if (mmodel.Carb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="CarAdd" asp-route-id="@mmodel.CollectionID">@mmodel.Name</a>
+            }
+
+            if (mmodel.Plantb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PlantAdd" asp-route-id="@mmodel.CollectionID">@mmodel.Name</a>
+            }
+        }
+    </div>
+    <div class="indexout3">
+        <h5>Tags to search</h5>
+        <select class="custom-select-sm2" name="modelka">
+            @foreach (var mmodel in Model.Tag)
+            {
+                <option   value="@mmodel.CollectionID">@mmodel.Text</option>
+            }
+        </select>
+        
+        <form method="post" asp-controller="Home"  class="searchbtn" asp-route-str="" asp-action="TagSearch">
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Login</a>
+    <a asp-controller="Account" asp-action="Register">Registration</a>
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

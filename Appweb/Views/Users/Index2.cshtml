@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model Appweb.Models.User
+@inject SignInManager<User> signInManager
+
+<div class="bs-tooltip-bottom">
+    <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="EditUserToCol">AddCollection</a>
+</div>
+
+@if (Model.Collections != null)
+{
+    <div>
+        @foreach (var user in Model.Collections)
+        {
+            if (user.Bookb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="BookAdd" asp-route-id="@user.CollectionID">@user.Name</a>
+            }
+        }
+        @foreach (var user in Model.Collections)
+        {
+            if (user.Phoneb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PhoneAdd" asp-route-id="@user.CollectionID">@user.Name</a>
+            }
+        }
+        @foreach (var user in Model.Collections)
+        {
+            if (user.Carb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="CarAdd" asp-route-id="@user.CollectionID">@user.Name</a>
+            }
+        }
+        @foreach (var user in Model.Collections)
+        {
+            if (user.Plantb == true)
+            {
+                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PlantAdd" asp-route-id="@user.CollectionID">@user.Name</a>
+            }
+        }
+    </div>
+}
