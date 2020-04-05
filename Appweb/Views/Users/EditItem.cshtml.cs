@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Appweb.Views.Home
+namespace Appweb.Views.Users
 {
-    public class PhoneAdd : PageModel
+    public class EditItemModel : PageModel
     {
         public void OnGet()
         {

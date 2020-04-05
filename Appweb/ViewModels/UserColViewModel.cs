@@ -17,5 +17,6 @@ namespace Appweb.ViewModels
         public bool Car { get; set; }
         public bool Phone { get; set; }
         public bool IsSelected { get; set; }
+        public string Path { get; set; }
     }
 }

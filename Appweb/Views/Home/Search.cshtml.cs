@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Appweb.Views.Users
 {
-    public class CreateBookModel : PageModel
+    public class SearchModel : PageModel
     {
         public void OnGet()
         {

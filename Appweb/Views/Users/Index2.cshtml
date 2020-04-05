@@ -1,41 +1,27 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @model Appweb.Models.User
 @inject SignInManager<User> signInManager
-
+@inject ApplicationContext context;
 <div class="bs-tooltip-bottom">
-    <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="EditUserToCol">AddCollection</a>
+    <a class="btn btn-outline-primary" asp-controller="Users" asp-action="EditUserToCol">AddCollection</a>
 </div>
 
 @if (Model.Collections != null)
 {
-    <div>
-        @foreach (var user in Model.Collections)
+<div>
+
+    @foreach (var user in Model.Collections)
+    {
+        if (user.Name != "")
         {
-            if (user.Bookb == true)
-            {
-                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="BookAdd" asp-route-id="@user.CollectionID">@user.Name</a>
-            }
+            <a class="btn" asp-controller="Users" asp-action="Collections" asp-route-id="@user.CollectionID">
+                <p>@user.Name</p>
+                <img src="@Url.Content(context.Collections.Find(user.CollectionID).ImageUrl)" width="130" height="130">
+
+            </a>
+           @* <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="Collections" asp-route-id="@user.CollectionID">@user.Name</a>*@
         }
-        @foreach (var user in Model.Collections)
-        {
-            if (user.Phoneb == true)
-            {
-                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PhoneAdd" asp-route-id="@user.CollectionID">@user.Name</a>
-            }
-        }
-        @foreach (var user in Model.Collections)
-        {
-            if (user.Carb == true)
-            {
-                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="CarAdd" asp-route-id="@user.CollectionID">@user.Name</a>
-            }
-        }
-        @foreach (var user in Model.Collections)
-        {
-            if (user.Plantb == true)
-            {
-                <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="PlantAdd" asp-route-id="@user.CollectionID">@user.Name</a>
-            }
-        }
-    </div>
+    }
+
+</div>
 }

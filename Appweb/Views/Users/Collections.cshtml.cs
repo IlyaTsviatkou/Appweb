@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Appweb.Views.Users
 {
-    public class EditCarModel : PageModel
+    public class CreateNewColModel : PageModel
     {
         public void OnGet()
         {

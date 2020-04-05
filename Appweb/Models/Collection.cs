@@ -17,14 +17,18 @@ namespace Appweb.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string UserID { get; set; }
-        public bool? Plantb { get; set; }
-        public bool? Bookb { get; set; }
-        public bool? Carb { get; set; }
-        public bool? Phoneb { get; set; }
-        public ICollection<Book> Books { get; set; }
-        public ICollection<Phone> Phones { get; set; }
-        public ICollection<Car> Cars { get; set; }
-        public ICollection<Plant> Plants { get; set; }
+        public string Theme { get; set; }
+        public string? Type1 { get; set; }
+        public string? Type2 { get; set; }
+        public string? Type3 { get; set; }
+        public string? Type4 { get; set; }
+        public string? Type5 { get; set; }
+        public string? Type6 { get; set; }
+        public string? Type7 { get; set; }
+        public string? Type8 { get; set; }
+        public string? Type9 { get; set; }
+
+        public ICollection<Item> Items { get; set; }
         public User Users { get; set; }
     }
 }

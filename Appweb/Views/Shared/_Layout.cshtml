@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<User> signInManager
+@{
+    string a = "";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,18 +35,32 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index2">MyCollections</a>
                             </li>
                         }
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Edit</a>
-                            </li>
-                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index1">AllCollections</a>
+                        </li>
                         @if (signInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index1">AllCollections</a>
-                            </li>
+
+                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Edit</a>
+                                </li>
+                            }
                         }
+                        <li>
+                            <form method="post">
+                                <div class="row form-group">
+                                    <div class="col-md-7">
+                                        <input class="form-control" name="text" id="TextSearchInput" placeholder="Enter text for full text search" />
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input class="btn bnt-sm btn-outline-dark" type="submit" asp-controller="Home" asp-action="Search" value="Search" />
+                                        <!--<button class="btn btn-success" id="ApplyTextSearchButton">Search</button>-->
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -55,11 +72,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Appweb - <a asp-area="" asp-controller="Privacy" asp-action="">Privacy</a>
-        </div>
-    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

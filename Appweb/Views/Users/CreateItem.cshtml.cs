@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Appweb.Views.Users
 {
-    public class EditBookModel : PageModel
+    public class CreateItemModel : PageModel
     {
         public void OnGet()
         {

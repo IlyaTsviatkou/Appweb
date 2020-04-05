@@ -5,14 +5,18 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SignalR;
+using System;
 
 namespace Appweb
 {
     public class Startup
     {
+        private UserManager<User> userManager;
+        private ApplicationContext _context;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+          
         }
 
         public IConfiguration Configuration { get; }
@@ -27,6 +31,9 @@ namespace Appweb
                 opts.Password.RequireNonAlphanumeric = false; 
             })
              .AddEntityFrameworkStores<ApplicationContext>();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddControllersWithViews()
+                .AddViewLocalization();
             services.AddSignalR();
             services.AddControllersWithViews();
             services.AddAuthentication()

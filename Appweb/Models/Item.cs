@@ -5,23 +5,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace Appweb.Models
 {
-    public class Plant
+    public class Item
     {
         [ScaffoldColumn(false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string PlantID { get; set; }
+        public string ItemID { get; set; }
         public string CollectionID { get; set; }
-        
         public string Name { get; set; }
-        
-        public string Kind { get; set; }
-        
-        public string Color { get; set; }
-        
         public string Description { get; set; }
+        public string? Field1 { get; set; }
+        public string? Field2 { get; set; }
+        public string? Field3 { get; set; }
+        public string? Field4 { get; set; }
+        public string? Field5 { get; set; }
+        public string? Field6 { get; set; }
+        public string? Field7 { get; set; }
+        public string? Field8 { get; set; }
+        public string? Field9 { get; set; }
+        public ICollection<Like> Likes { get; set; }
         public Collection Collections { get; set; }
 
     }

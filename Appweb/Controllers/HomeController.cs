@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Appweb.Models;
-using NHibernate;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Appweb.ViewModels;
+using Korzh.EasyQuery.Linq;
 
 namespace Appweb.Controllers
 {
@@ -20,13 +20,44 @@ namespace Appweb.Controllers
         private ApplicationContext db;
         private UserManager<User> _userManager;
         ApplicationContext _context;
+        RoleManager<IdentityRole> roleManager;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager, ApplicationContext context)
+
+        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager, ApplicationContext context, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _userManager = userManager;
             _context = context;
+            /* this.roleManager = roleManager;
+             var a = _context.Users.ToList().Count;
+             var r = _context.Roles.ToList().Count;
+
+             if (a == 0)
+             {
+                 var b = DateTime.Now;
+                 User user = new User { Email = "Admin@Admin.com", UserName = "Admin@Admin.com", Name = "Admin", DateLog = b, DateReg = b, };
+                 _userManager.CreateAsync(user, "Admin123");
+
+             }
+             if (r == 0)
+             {
+                 IdentityRole identityRole = new IdentityRole
+                 {
+                     Name = "Admin"
+                 };
+                 var t = roleManager.CreateAsync(identityRole);
+
+
+
+                 if (t.IsCanceled)
+                 {
+                     var s = _context.Users.ToList()[0];
+                     _userManager.AddToRoleAsync(s, identityRole.Name);
+                 }
+
+             }*/
         }
+
 
         public IActionResult Index()
         {
@@ -36,7 +67,8 @@ namespace Appweb.Controllers
             ItemTagCol cv = new ItemTagCol();
 
             var sortedUsers = from u in a
-                              orderby u.CollectionID
+                              orderby u.CountItem
+                              descending
                               select u;
 
             List<Collection> col = new List<Collection>();
@@ -49,27 +81,89 @@ namespace Appweb.Controllers
                     col.Add(m);
                     i++;
                 }
+                else
+                {
+                    break;
+                }
             }
             cv.Collection = col;
             cv.Tag = _context.Tags.ToList();
             return View(cv);
         }
+        [HttpGet]
         [HttpPost]
         public async Task<IActionResult> TagSearch(string modelka)
         {
-            List<Plant> a = new List<Plant>();
-            List<Plant> b = new List<Plant>();
-            var ab = ViewBag.colID;
-            var ac = modelka;
-          
-            return View();
+            Tag tag = _context.Tags.Find(modelka);
+            List<Item> a = new List<Item>();
+            List<Comment> c = new List<Comment>();
+            if(tag==null)
+            {
+                return NotFound();
+            }
+            if (!string.IsNullOrEmpty(tag.Text))
+            {
+                a = _context.Items.FullTextSearchQuery(tag.Text).ToList();
+                c = _context.Comments.FullTextSearchQuery(tag.Text).ToList();
+            }
+            Items model = new Items();
+            List<Item> b = new List<Item>();
+            if (tag.CollectionID != "")
+            {
+                foreach (var s in a)
+                {
+                    if (s.CollectionID == tag.CollectionID)
+                        b.Add(s);
+                }
+                model.item = b;
+            }
+            else
+                model.item = a;
+            foreach (Comment com in c)
+            {
+                var x = _context.Items.Find(com.ItemID);
+                if (!model.item.Contains(x))
+                {
+                    model.item.Add(x);
+                }
+            }
+
+            return View("Search", model);
         }
-      
+        [HttpPost]
+        public IActionResult Search(string text, Items model)
+        {
+            List<Item> a = new List<Item>();
+            List<Comment> c = new List<Comment>();
+            if (!string.IsNullOrEmpty(text))
+            {
+                a = _context.Items.FullTextSearchQuery(text).ToList();
+                c = _context.Comments.FullTextSearchQuery(text).ToList();
+                Tag tag = new Tag { CollectionID = "", Text = text, Main = true };
+                var tags = _context.Tags.Where(t => t.Text == tag.Text).FirstOrDefault();
+                if (tags == null)
+                {
+                    _context.Tags.Add(tag);
+                    _context.SaveChanges();
+                }
+            }
+
+            model.item = a;
+            foreach (Comment com in c)
+            {
+                var x = _context.Items.Find(com.ItemID);
+                if (!model.item.Contains(x))
+                {
+                    model.item.Add(x);
+                }
+            }
+            return View(model);
+        }
         public IActionResult Register()
         {
             return View();
         }
-        
+
         public IActionResult TableUsers()
         {
             return View();

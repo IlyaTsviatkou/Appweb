@@ -15,5 +15,6 @@ namespace Appweb.Models
         public string Text { get; set; }
         public string UserID { get; set; }
         public string ItemID { get; set; }
+        public string Count { get; set; }
     }
 }

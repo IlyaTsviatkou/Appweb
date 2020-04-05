@@ -10,20 +10,20 @@
             <div asp-validation-summary="ModelOnly"></div>
             <div>
                 <label asp-for="Email"></label><br />
-                <input asp-for="Email" />
+                <input class="form-control" style="width:auto" asp-for="Email" />
                 <span asp-validation-for="Email"></span>
             </div>
             <div>
                 <label asp-for="Password"></label><br />
-                <input asp-for="Password" />
+                <input class="form-control" style="width:auto" asp-for="Password" />
                 <span asp-validation-for="Password"></span>
             </div>
             <div>
                 <label asp-for="RememberMe"></label><br />
-                <input asp-for="RememberMe" />
+                <input class="form-control" style="width:auto" asp-for="RememberMe" />
             </div>
             <div>
-                <input type="submit" value="Submit" />
+                <input type="submit" style="margin-top:10px" class="btn btn-outline-dark" value="Submit" />
             </div>
         </form>
     </div>
@@ -34,17 +34,19 @@
         @{
             try
             {
-                if (Model.ExternalLogins.Count == 0)
+                if (Model.ExternalLogins != null)
                 {
+                    if (Model.ExternalLogins.Count == 0)
+                    {
                     <div>No external logins configured</div>
-                }
-                else
-                {
+                    }
+                    else
+                    {
                     <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
                         <div>
                             @foreach (var provider in Model.ExternalLogins)
                             {
-                                <button type="submit" class="btn btn-primary"
+                                <button type="submit" class="btn btn-dark"
                                         name="provider" value="@provider.Name"
                                         title="Login usin your @provider.DisplayName account">
                                     @provider.DisplayName
@@ -52,11 +54,12 @@
                             }
                         </div>
                     </form>
+                        }
+                    }
                 }
-            }
-            catch { }
+                catch { }
 
-        }
-       
+            }
+
     </div>
 </div>
