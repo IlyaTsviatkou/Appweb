@@ -69,7 +69,8 @@ namespace Appweb.Controllers
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
             var role = await roleManager.FindByIdAsync(model.Id);
-
+            User user = await userManager.FindByEmailAsync("Admin@admin.com");
+            await userManager.AddToRoleAsync(user, role.Name);
             if (role == null)
             {
                 ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
@@ -82,6 +83,7 @@ namespace Appweb.Controllers
 
                 if(result.Succeeded)
                 {
+                   
                     return RedirectToAction("ListRoles");
                 }
 

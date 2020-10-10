@@ -7,12 +7,12 @@ using Appweb.Views;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using System.Data.Entity;
 using Appweb.ViewModels;
 using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Appweb.Services;
 
 namespace Appweb.Controllers
 {
@@ -40,12 +40,10 @@ namespace Appweb.Controllers
             var id = _userManager.GetUserId(User);
             User user = await _userManager.FindByIdAsync(id);
 
-            Collection col = new Collection { Name = "", Description = "", CountItem = 0, ImageUrl = "", UserID = "" };
+            Collection col = new Collection { Name = "", Description = "", CountItem = 0, ImageUrl = "", UserID = id };
             if (user != null)
                 foreach (Collection s in collection)
                 {
-
-
                     if (user.Collections == null)
                     {
                         _context.Collections.Add(col);
@@ -208,8 +206,12 @@ namespace Appweb.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
+            EmailService emailService = new EmailService();
+            
+           // return RedirectToAction("Index");
             if (user != null)
             {
+                await emailService.SendEmailAsync(user.Email, "Тема письма: Предупреждение", "Тест письма: Администратор удалил ваш аккаунт");
                 IdentityResult result = await _userManager.DeleteAsync(user);
 
             }
@@ -300,45 +302,50 @@ namespace Appweb.Controllers
             model.ItemID = id;
             model.UserName = user2.UserName;
             return View(model);
+           
         }
         [HttpPost]
         public async Task<IActionResult> EditComment(CommentViewModel model, string id)
+
         {
-            Comment model2 = new Comment { ItemID = id, UserID = _userManager.GetUserId(User), Text = model.Text };
+            
+                Comment model2 = new Comment { ItemID = id, UserID = _userManager.GetUserId(User), Text = model.Text };
 
-            var a = _context.Comments.ToList();
-            List<Comment> b = new List<Comment>();
+                var a = _context.Comments.ToList();
+                List<Comment> b = new List<Comment>();
 
-            foreach (Comment s in a)
-            {
-                if (s.ItemID == id)
+                foreach (Comment s in a)
                 {
-                    b.Add(s);
+                    if (s.ItemID == id)
+                    {
+                        b.Add(s);
+                    }
+                }
+            if (model.Text !=null || model.Text!="")
+            {
+                if (b.Count != 0)
+                {
+                    var sortedUsers = from u in b
+                                      orderby u.Count
+                                      select u;
+
+                    var ss = sortedUsers.Last();
+                    int L = Convert.ToInt32(ss.Count);
+                    L++;
+                    model2.Count = Convert.ToString(L);
+                    _context.Comments.Add(model2);
+                    _context.SaveChanges();
+                    b = sortedUsers.ToList();
+                    b.Add(model2);
+                }
+                else
+                {
+                    model2.Count = "1";
+                    _context.Comments.Add(model2);
+                    _context.SaveChanges();
+                    b.Add(model2);
                 }
             }
-            if (b.Count != 0)
-            {
-                var sortedUsers = from u in b
-                                  orderby u.Count
-                                  select u;
-
-                var ss = sortedUsers.Last();
-                int L = Convert.ToInt32(ss.Count);
-                L++;
-                model2.Count = Convert.ToString(L);
-                _context.Comments.Add(model2);
-                _context.SaveChanges();
-                b = sortedUsers.ToList();
-                b.Add(model2);
-            }
-            else
-            {
-                model2.Count = "1";
-                _context.Comments.Add(model2);
-                _context.SaveChanges();
-                b.Add(model2);
-            }
-
 
             model.Comments = b;
             model.UserID = _userManager.GetUserId(User);

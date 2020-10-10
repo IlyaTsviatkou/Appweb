@@ -1,54 +1,30 @@
-﻿class Message {
-    constructor(UserID, Text, ItemID) {
-        this.UserID = UserID;
-        this.Text = Text;
-        this.ItemID = ItemID;
-    }
-}
+﻿"use strict";
 
-// userName is declared in razor page.
-const userInput = document.getElementById('userid');
-const textInput = document.getElementById('Text');
-const itemInput = document.getElementById('itemid');
-const chat = document.getElementById('chat');
-const messagesQueue = [];
+var connection = new signalR.HubConnectionBuilder().withUrl("/comment").build();
 
-document.getElementById('btnCm').addEventListener('onclick', () => {
-    var currentdate = new Date();
-    when.innerHTML =
-        (currentdate.getMonth() + 1) + "/"
-        + currentdate.getDate() + "/"
-        + currentdate.getFullYear() + " "
-        + currentdate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+//Disable send button until connection is established
+document.getElementById("sendButton").disabled = true;
+
+connection.on("Send", function (UserName,Text) {
+    var encodedMsg = "<p>Логин:".concat(UserName, "</p>", "<p>Коментарий:", Text, "</p><br/>");
+    var li = document.createElement("li");
+    li.innerHTML = encodedMsg;
+    document.getElementById("messagesList").appendChild(li);
 });
 
-function clearInputField() {
-    messagesQueue.push(textInput.value);
-    textInput.value = "";
-}
+connection.start().then(function () {
+    document.getElementById("sendButton").disabled = false;
+}).catch(function (err) {
+    return console.error(err.toString());
+});
 
-function sendMessage() {
-    let text = messagesQueue.shift() || "";
-    if (text.trim() === "") return;
+document.getElementById("sendButton").addEventListener("click", function (event) {
+    var UserName = document.getElementById("name-user").textContent;
+    var Text = document.getElementById("Text").value;
+    connection.invoke("Send", UserName, Text);//.catch(function (err) {
+        //return console.error(err.toString());
+//}
+//);
 
-    let userid = userInput.value;
-    let itemid = itemInput.value;
-    let message = new Message(userid, text, itemid);
-    sendMessageToHub(message);
-}
-
-function addMessageToChat(message) {
-    let isCurrentUserMessage = message.userName === username;
-
-    let container = document.createElement('div');
-    container.className = "card";
-    let sender = document.createElement('div');
-    sender.className = "card-header";
-    sender.innerHTML = message.UserID;
-    let text = document.createElement('div');
-    text.className = "card-body";
-    text.innerHTML = message.Text;
-    container.appendChild(sender);
-    container.appendChild(text);
-    chat.appendChild(container);
-}
+    event.preventDefault();
+});

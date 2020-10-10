@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Appweb.ViewModels;
 using Korzh.EasyQuery.Linq;
+using Microsoft.AspNetCore;
 
 namespace Appweb.Controllers
 {
@@ -162,6 +163,13 @@ namespace Appweb.Controllers
         public IActionResult Register()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+            var model = await _userManager.FindByEmailAsync(User.Identity.Name);
+
+            return View(model);
         }
 
         public IActionResult TableUsers()

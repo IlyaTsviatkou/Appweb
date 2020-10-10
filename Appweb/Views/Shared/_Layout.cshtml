@@ -48,20 +48,26 @@
                                 </li>
                             }
                         }
-                        <li>
-                            <form method="post">
-                                <div class="row form-group">
-                                    <div class="col-md-7">
-                                        <input class="form-control" name="text" id="TextSearchInput" placeholder="Enter text for full text search" />
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
+                            </li>
+                        }
+                            <li>
+                                <form method="post">
+                                    <div class="row form-group">
+                                        <div class="col-md-7">
+                                            <input class="form-control" name="text" id="TextSearchInput" placeholder="Enter text for full text search" />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input class="btn bnt-sm btn-outline-dark" type="submit" asp-controller="Home" asp-action="Search" value="Search" />
+                                            <!--<button class="btn btn-success" id="ApplyTextSearchButton">Search</button>-->
+                                        </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <input class="btn bnt-sm btn-outline-dark" type="submit" asp-controller="Home" asp-action="Search" value="Search" />
-                                        <!--<button class="btn btn-success" id="ApplyTextSearchButton">Search</button>-->
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
+                                </form>
+                            </li>
+                        </ul>
                 </div>
             </div>
         </nav>

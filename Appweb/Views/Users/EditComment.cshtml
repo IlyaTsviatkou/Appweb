@@ -9,28 +9,29 @@
 @{
     int i = 0;
     User user = await signInManager.UserManager.FindByIdAsync(Model.UserID);
-   
+
 }
 
-<div class="card">
-    <form method="post">
-        <div class="card-header" id="userid" value="@Model.UserID">
+    <div class="card">
+        <form method="post">
+            <div class="card-header" id="userid" value="@Model.UserID">
 
 
-            @user.UserName
-        </div>
-        <div class="card-body" id="itemid" value="@Model.ItemID">
-            <label asp-for="@Model.Text" class="control-label">Name</label>
-            <input type="text" asp-route-id="@Model.ItemID" id="Text" asp-for="@Model.Text" class="form-control" />
-        </div>
+                <label id="name-user" value="@user.UserName">@user.UserName</label>
+            </div>
+            <div class="card-body" id="itemid" value="@Model.ItemID">
+                <label asp-for="@Model.Text" class="control-label">Text</label>
+                <input type="text" asp-route-id="@Model.ItemID" id="Text" value="" asp-for="@Model.Text" class="form-control" />
+            </div>
+
+        </form>
         <div class="card-footer">
             <div>
-                <input type="submit" asp-controller="Users" asp-action="EditComment" id="btnCm" value="Create" class="btn btn-outline-primary" style="width:auto" />
+                <input type="submit" id="sendButton" value="Create" class="btn btn-outline-primary" style="width:auto" />
                 <a asp-action="Index1" class="btn btn-outline-danger" style="width:auto">Cancel</a>
             </div>
         </div>
-    </form>
-</div>
+    </div>
 <div id="chat">
 
 
@@ -39,8 +40,8 @@
         <div class="card">
             <div class="card-header">
 
-                @{ 
-                    User user2= await signInManager.UserManager.FindByIdAsync(a.UserID);
+                @{
+                    User user2 = await signInManager.UserManager.FindByIdAsync(a.UserID);
                 }
                 @user2.UserName
             </div>
@@ -52,52 +53,15 @@
         </div>
         i++;
     }
+    <ul style="min-height:300px;height:auto;background-color:white; border-radius:5px;" id="messagesList">
+    </ul>
+
 </div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
 <div><p id="response"></p></div>
 
 
 
-@section scripts {
-    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/chat.js"></script>
-    <script src="~/js/signrReqHandler.js"></script>
-
-}
 
 
-@*
-        @section scripts{
-            <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
-            <script>
-                const hubConnection = new signalR.HubConnectionBuilder()
-                    .withUrl("/comment")
-                    .build();
-
-                // получение сообщения от сервера
-                hubConnection.on("Send", function (user) {
-                    document.getElementById("Text").value = user.UserId;
-                     document.getElementById("response").innerText = "UserID: " + user.UserId + " ItemID: " + user.ItemId + " Text:" + user.Text;
-                });
-
-                // отправка сообщения на сервер
-                 document.getElementById("btnCm").addEventListener("click", function (e) {
-
-                    alert("Кролик номер " + 10);
-                    let text = document.getElementById("Text").value;
-                    let userid =document.getElementById("userid").value;
-                    let itemid =document.getElementById("itemid").value;
-                    hubConnection.invoke("Send", { "UserId": userid, "ItemId": itemid,"Text":text });
-                    document.getElementById("Text").value = "";
-                });
-
-               // hubConnection.start();
-            </script>
-            <script>
-                function countRabbits2() {
-                    for (let i = 1; i <= 3; i++) {
-                        alert("Кролик номер " + i);
-                    }
-                }
-            </script>
-    }*@

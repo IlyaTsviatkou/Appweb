@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SignalR;
 using System;
+using Appweb.Hubs;
 
 namespace Appweb
 {
@@ -26,6 +27,7 @@ namespace Appweb
             
             services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequireNonAlphanumeric = false; 

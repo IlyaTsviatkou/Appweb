@@ -7,7 +7,7 @@ namespace Appweb.Models
 {
     public class ApplicationContext : IdentityDbContext<User>
     {
-        
+        //public DbSet<IdentityUser> Users { get; set; }
         public DbSet<Collection> Collections { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -18,18 +18,17 @@ namespace Appweb.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
         {
-            
-            Database.EnsureCreated();
-            
-         
+                Database.EnsureCreated(); 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+           /* modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Like>().ToTable("Like");
             modelBuilder.Entity<Comment>().ToTable("Comment");
+            modelBuilder.Entity<Collection>().ToTable("Collection");
             modelBuilder.Entity<Tag>().ToTable("Tag");
-            modelBuilder.Entity<Item>().ToTable("Item");
+            modelBuilder.Entity<Item>().ToTable("Item");*/
         }
 
     }

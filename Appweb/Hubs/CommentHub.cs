@@ -5,21 +5,16 @@ using System.Threading.Tasks;
 using Appweb.ViewModels;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Appweb.Models
+namespace Appweb.Hubs
 {
     public class CommentHub : Hub
     {
         
-            public async Task SendMesssage(CommentM Comment)
+            public async Task Send(string UserID,string Text)
             {
-                await Clients.All.SendAsync("receiveMessage", Comment);
+                await Clients.All.SendAsync("Send",UserID , Text);
             }
-        public class CommentM
-        {
-            public string UserID { get; set; }
-            public string ItemID { get; set; }
-            public string Text { get; set; }
-        }
+      
         
     }
 }
