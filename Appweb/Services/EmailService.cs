@@ -9,7 +9,7 @@ namespace Appweb.Services
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "ilyatsv@yandex.ru"));
+            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "ilya.tsv@mail.ru"));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -19,8 +19,9 @@ namespace Appweb.Services
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.yandex.ru", 25, false);
-                await client.AuthenticateAsync("ilyatsv@yandex.ru", "ASP123admin");
+                
+                await client.ConnectAsync("smtp.mail.ru", 25, false);
+                await client.AuthenticateAsync("ilya.tsv@mail.ru", "Ii07022001");
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

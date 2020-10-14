@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Appweb.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201008212658_initial2")]
-    partial class initial2
+    [Migration("20201013192920_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

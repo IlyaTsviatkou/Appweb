@@ -211,8 +211,8 @@ namespace Appweb.Controllers
            // return RedirectToAction("Index");
             if (user != null)
             {
-                await emailService.SendEmailAsync(user.Email, "Тема письма: Предупреждение", "Тест письма: Администратор удалил ваш аккаунт");
-                IdentityResult result = await _userManager.DeleteAsync(user);
+                await emailService.SendEmailAsync(user.Email, "Предупреждение", "Администратор удалил ваш аккаунт: "+user.UserName);
+                await _userManager.DeleteAsync(user);
 
             }
             return RedirectToAction("Index");

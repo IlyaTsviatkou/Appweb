@@ -1,0 +1,1112 @@
+2020-10-14 20:10:33.715 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:10:35.011 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:10:35.132 +03:00 [INF] Executed DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:10:36.040 +03:00 [INF] Executed DbCommand (131ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-10-14 20:10:36.250 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-10-14 20:10:36.476 +03:00 [INF] User profile is available. Using 'C:\Users\ilyatsv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-14 20:10:37.462 +03:00 [INF] Now listening on: https://localhost:5001
+2020-10-14 20:10:37.462 +03:00 [INF] Now listening on: http://localhost:5000
+2020-10-14 20:10:39.069 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:10:39.323 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:10:39.355 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:10:39.360 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:10:39.373 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:10:39.436 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:10:39.657 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:10:39.672 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:10:39.721 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:10:40.108 +03:00 [INF] Executed ViewResult - view Index executed in 391.8159ms.
+2020-10-14 20:10:40.110 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 672.971ms
+2020-10-14 20:10:40.110 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:10:40.127 +03:00 [INF] Request finished in 1066.7209ms 200 text/html; charset=utf-8
+2020-10-14 20:10:40.313 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js  
+2020-10-14 20:10:40.314 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css  
+2020-10-14 20:10:40.314 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css  
+2020-10-14 20:10:40.314 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
+2020-10-14 20:10:40.315 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0  
+2020-10-14 20:10:40.391 +03:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\css\site.css'
+2020-10-14 20:10:40.391 +03:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\js\site.js'
+2020-10-14 20:10:40.392 +03:00 [INF] Request finished in 78.8941ms 200 text/css
+2020-10-14 20:10:40.393 +03:00 [INF] Request finished in 77.2892ms 200 application/javascript
+2020-10-14 20:10:40.396 +03:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\jquery\dist\jquery.min.js'
+2020-10-14 20:10:40.396 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2020-10-14 20:10:40.396 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2020-10-14 20:10:40.411 +03:00 [INF] Request finished in 97.8381ms 200 application/javascript
+2020-10-14 20:10:40.412 +03:00 [INF] Request finished in 98.4237ms 200 text/css
+2020-10-14 20:10:40.412 +03:00 [INF] Request finished in 98.5083ms 200 application/javascript
+2020-10-14 20:10:44.581 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/kl  
+2020-10-14 20:10:44.695 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:10:44.714 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:10:44.718 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:10:44.732 +03:00 [INF] Request finished in 153.1616ms 404 
+2020-10-14 20:10:46.807 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:10:46.831 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:10:46.836 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:10:46.843 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:10:46.865 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:10:46.867 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:10:46.874 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:10:46.876 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:10:46.877 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:10:46.890 +03:00 [INF] Executed ViewResult - view Index executed in 13.7065ms.
+2020-10-14 20:10:46.891 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 23.0103ms
+2020-10-14 20:10:46.891 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:10:46.891 +03:00 [INF] Request finished in 85.9677ms 200 text/html; charset=utf-8
+2020-10-14 20:13:24.751 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:13:26.031 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:13:26.154 +03:00 [INF] Executed DbCommand (87ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:13:27.052 +03:00 [INF] Executed DbCommand (136ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-10-14 20:13:27.269 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-10-14 20:13:27.471 +03:00 [INF] User profile is available. Using 'C:\Users\ilyatsv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-14 20:13:28.488 +03:00 [INF] Now listening on: https://localhost:5001
+2020-10-14 20:13:28.488 +03:00 [INF] Now listening on: http://localhost:5000
+2020-10-14 20:13:30.261 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:13:30.511 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:13:30.516 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:13:30.520 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:13:30.535 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:13:30.599 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:13:30.811 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:13:30.827 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:13:30.873 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:13:31.208 +03:00 [INF] Executed ViewResult - view Index executed in 336.76ms.
+2020-10-14 20:13:31.211 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 610.4325ms
+2020-10-14 20:13:31.211 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:13:31.231 +03:00 [INF] Request finished in 977.5507ms 200 text/html; charset=utf-8
+2020-10-14 20:13:31.393 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css  
+2020-10-14 20:13:31.393 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js  
+2020-10-14 20:13:31.393 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css  
+2020-10-14 20:13:31.393 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
+2020-10-14 20:13:31.394 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0  
+2020-10-14 20:13:31.493 +03:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\js\site.js'
+2020-10-14 20:13:31.493 +03:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\css\site.css'
+2020-10-14 20:13:31.513 +03:00 [INF] Request finished in 120.7656ms 200 text/css
+2020-10-14 20:13:31.513 +03:00 [INF] Request finished in 119.5949ms 200 application/javascript
+2020-10-14 20:13:31.522 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2020-10-14 20:13:31.522 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2020-10-14 20:13:31.522 +03:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\jquery\dist\jquery.min.js'
+2020-10-14 20:13:31.527 +03:00 [INF] Request finished in 134.3127ms 200 application/javascript
+2020-10-14 20:13:31.527 +03:00 [INF] Request finished in 134.3957ms 200 text/css
+2020-10-14 20:13:31.527 +03:00 [INF] Request finished in 134.5135ms 200 application/javascript
+2020-10-14 20:13:36.234 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/s  
+2020-10-14 20:13:36.351 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:13:36.370 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:13:36.374 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:13:36.387 +03:00 [INF] Executing endpoint 'Appweb.Controllers.Error.Index (Appweb)'
+2020-10-14 20:13:36.422 +03:00 [INF] Route matched with {action = "Index", controller = "Error"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(System.Nullable`1[System.Int32]) on controller Appweb.Controllers.Error (Appweb).
+2020-10-14 20:13:36.458 +03:00 [ERR] Error. Status code 404
+2020-10-14 20:13:36.511 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:13:36.533 +03:00 [INF] Executed ViewResult - view Index executed in 24.486ms.
+2020-10-14 20:13:36.534 +03:00 [INF] Executed action Appweb.Controllers.Error.Index (Appweb) in 111.6251ms
+2020-10-14 20:13:36.534 +03:00 [INF] Executed endpoint 'Appweb.Controllers.Error.Index (Appweb)'
+2020-10-14 20:13:36.535 +03:00 [INF] Request finished in 302.6787ms 404 text/html; charset=utf-8
+2020-10-14 20:13:43.789 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:13:43.808 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:13:43.812 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:13:43.818 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:13:43.842 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:13:43.843 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:13:43.851 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:13:43.852 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:13:43.853 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:13:43.860 +03:00 [INF] Executed ViewResult - view Index executed in 7.2529ms.
+2020-10-14 20:13:43.861 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 16.7766ms
+2020-10-14 20:13:43.861 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:13:43.861 +03:00 [INF] Request finished in 73.9674ms 200 text/html; charset=utf-8
+2020-10-14 20:32:19.405 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:32:23.187 +03:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:32:23.364 +03:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:32:24.443 +03:00 [INF] Executed DbCommand (147ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-10-14 20:32:24.710 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-10-14 20:32:24.944 +03:00 [INF] User profile is available. Using 'C:\Users\ilyatsv\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-10-14 20:32:26.085 +03:00 [INF] Now listening on: https://localhost:5001
+2020-10-14 20:32:26.085 +03:00 [INF] Now listening on: http://localhost:5000
+2020-10-14 20:33:01.102 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:33:01.322 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:01.382 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:33:01.404 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:01.440 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:01.455 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:01.653 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:01.668 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:33:01.714 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:33:02.067 +03:00 [INF] Executed ViewResult - view Index executed in 354.3685ms.
+2020-10-14 20:33:02.071 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 687.1996ms
+2020-10-14 20:33:02.071 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:02.080 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js  
+2020-10-14 20:33:02.080 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css  
+2020-10-14 20:33:02.080 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css  
+2020-10-14 20:33:02.080 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
+2020-10-14 20:33:02.081 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0  
+2020-10-14 20:33:02.098 +03:00 [INF] Request finished in 1001.8495ms 200 text/html; charset=utf-8
+2020-10-14 20:33:02.158 +03:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\js\site.js'
+2020-10-14 20:33:02.160 +03:00 [INF] Request finished in 78.7063ms 200 application/javascript
+2020-10-14 20:33:02.179 +03:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\css\site.css'
+2020-10-14 20:33:02.180 +03:00 [INF] Request finished in 100.0086ms 200 text/css
+2020-10-14 20:33:02.190 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2020-10-14 20:33:02.190 +03:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2020-10-14 20:33:02.197 +03:00 [INF] Request finished in 116.9285ms 200 application/javascript
+2020-10-14 20:33:02.197 +03:00 [INF] Request finished in 117.2644ms 200 text/css
+2020-10-14 20:33:02.203 +03:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\lib\jquery\dist\jquery.min.js'
+2020-10-14 20:33:02.204 +03:00 [INF] Request finished in 124.2797ms 200 application/javascript
+2020-10-14 20:33:31.019 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:33:31.024 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:31.027 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:33:31.209 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:31.227 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:31.231 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:31.253 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:31.254 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:33:31.256 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:33:31.273 +03:00 [INF] Executed ViewResult - view Index executed in 17.8831ms.
+2020-10-14 20:33:31.274 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 246.4863ms
+2020-10-14 20:33:31.274 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:31.275 +03:00 [INF] Request finished in 256.451ms 200 text/html; charset=utf-8
+2020-10-14 20:33:34.824 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Account/Register  
+2020-10-14 20:33:34.844 +03:00 [INF] Executing endpoint 'Appweb.Controllers.AccountController.Register (Appweb)'
+2020-10-14 20:33:34.851 +03:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller Appweb.Controllers.AccountController (Appweb).
+2020-10-14 20:33:34.853 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:34.856 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:34.860 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:34.865 +03:00 [INF] Executing ViewResult, running view Register.
+2020-10-14 20:33:34.970 +03:00 [INF] Executed ViewResult - view Register executed in 108.3246ms.
+2020-10-14 20:33:34.971 +03:00 [INF] Executed action Appweb.Controllers.AccountController.Register (Appweb) in 119.902ms
+2020-10-14 20:33:34.971 +03:00 [INF] Executed endpoint 'Appweb.Controllers.AccountController.Register (Appweb)'
+2020-10-14 20:33:34.972 +03:00 [INF] Request finished in 148.4826ms 200 text/html; charset=utf-8
+2020-10-14 20:33:36.297 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:33:36.301 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:36.302 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:33:36.307 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:36.310 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:36.316 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:36.321 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:36.325 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:33:36.326 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:33:36.334 +03:00 [INF] Executed ViewResult - view Index executed in 7.9552ms.
+2020-10-14 20:33:36.334 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 31.1406ms
+2020-10-14 20:33:36.334 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:36.335 +03:00 [INF] Request finished in 38.9537ms 200 text/html; charset=utf-8
+2020-10-14 20:33:37.088 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Account/Login  
+2020-10-14 20:33:37.103 +03:00 [INF] Executing endpoint 'Appweb.Controllers.AccountController.Login (Appweb)'
+2020-10-14 20:33:37.156 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller Appweb.Controllers.AccountController (Appweb).
+2020-10-14 20:33:37.159 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:37.162 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:37.167 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:37.204 +03:00 [INF] Executing ViewResult, running view Login.
+2020-10-14 20:33:37.265 +03:00 [INF] Executed ViewResult - view Login executed in 63.0786ms.
+2020-10-14 20:33:37.265 +03:00 [INF] Executed action Appweb.Controllers.AccountController.Login (Appweb) in 108.6482ms
+2020-10-14 20:33:37.265 +03:00 [INF] Executed endpoint 'Appweb.Controllers.AccountController.Login (Appweb)'
+2020-10-14 20:33:37.266 +03:00 [INF] Request finished in 179.6208ms 200 text/html; charset=utf-8
+2020-10-14 20:33:45.525 +03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Account/Login application/x-www-form-urlencoded 241
+2020-10-14 20:33:45.528 +03:00 [INF] Executing endpoint 'Appweb.Controllers.AccountController.Login (Appweb)'
+2020-10-14 20:33:45.549 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Appweb.Views.LoginViewModel) on controller Appweb.Controllers.AccountController (Appweb).
+2020-10-14 20:33:45.569 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:45.572 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:45.576 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:45.658 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-10-14 20:33:45.890 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2020-10-14 20:33:46.015 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2020-10-14 20:33:46.023 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2020-10-14 20:33:46.044 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2020-10-14 20:33:46.065 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-10-14 20:33:46.091 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2020-10-14 20:33:46.105 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2020-10-14 20:33:46.531 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p18='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = DateTime2), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 4000), @p9='?' (Size = 256), @p10='?' (Size = 256), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [DateLog] = @p2, [DateReg] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [Name] = @p8, [NormalizedEmail] = @p9, [NormalizedUserName] = @p10, [PasswordHash] = @p11, [PhoneNumber] = @p12, [PhoneNumberConfirmed] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UserName] = @p16
+WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
+SELECT @@ROWCOUNT;
+2020-10-14 20:33:46.626 +03:00 [INF] Executing RedirectResult, redirecting to /.
+2020-10-14 20:33:46.630 +03:00 [INF] Executed action Appweb.Controllers.AccountController.Login (Appweb) in 1081.4003ms
+2020-10-14 20:33:46.632 +03:00 [INF] Executed endpoint 'Appweb.Controllers.AccountController.Login (Appweb)'
+2020-10-14 20:33:46.637 +03:00 [INF] Request finished in 1113.1837ms 302 
+2020-10-14 20:33:46.657 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:33:46.664 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:46.665 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:46.669 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:46.675 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:46.676 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:33:46.678 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:46.679 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:33:46.680 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:33:46.692 +03:00 [INF] Executed ViewResult - view Index executed in 12.3237ms.
+2020-10-14 20:33:46.693 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 16.4614ms
+2020-10-14 20:33:46.693 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:33:46.694 +03:00 [INF] Request finished in 37.5012ms 200 text/html; charset=utf-8
+2020-10-14 20:33:49.658 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/Index1  
+2020-10-14 20:33:49.665 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:49.668 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:49.674 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:49.676 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.Index1 (Appweb)'
+2020-10-14 20:33:49.688 +03:00 [INF] Route matched with {action = "Index1", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index1() on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:33:49.695 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:49.739 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:33:49.747 +03:00 [INF] Executing ViewResult, running view Index1.
+2020-10-14 20:33:49.766 +03:00 [INF] Executed ViewResult - view Index1 executed in 21.7978ms.
+2020-10-14 20:33:49.766 +03:00 [INF] Executed action Appweb.Controllers.UsersController.Index1 (Appweb) in 77.8058ms
+2020-10-14 20:33:49.766 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.Index1 (Appweb)'
+2020-10-14 20:33:49.767 +03:00 [INF] Request finished in 109.7378ms 200 text/html; charset=utf-8
+2020-10-14 20:33:50.881 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/Index2  
+2020-10-14 20:33:50.901 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:50.906 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:50.913 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:50.914 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.Index2 (Appweb)'
+2020-10-14 20:33:50.927 +03:00 [INF] Route matched with {action = "Index2", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index2() on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:33:50.933 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:33:50.941 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:33:50.949 +03:00 [INF] Executing ViewResult, running view Index2.
+2020-10-14 20:33:50.967 +03:00 [INF] Executed ViewResult - view Index2 executed in 19.7989ms.
+2020-10-14 20:33:50.967 +03:00 [INF] Executed action Appweb.Controllers.UsersController.Index2 (Appweb) in 39.7171ms
+2020-10-14 20:33:50.967 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.Index2 (Appweb)'
+2020-10-14 20:33:50.968 +03:00 [INF] Request finished in 87.2825ms 200 text/html; charset=utf-8
+2020-10-14 20:33:51.617 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/EditUserToCol  
+2020-10-14 20:33:51.621 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:33:51.624 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:33:51.630 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:33:51.632 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.EditUserToCol (Appweb)'
+2020-10-14 20:33:51.654 +03:00 [INF] Route matched with {action = "EditUserToCol", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditUserToCol() on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:33:51.681 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+2020-10-14 20:33:51.689 +03:00 [INF] Executing ViewResult, running view EditUserToCol.
+2020-10-14 20:33:51.803 +03:00 [INF] Executed ViewResult - view EditUserToCol executed in 116.1953ms.
+2020-10-14 20:33:51.803 +03:00 [INF] Executed action Appweb.Controllers.UsersController.EditUserToCol (Appweb) in 149.1568ms
+2020-10-14 20:33:51.804 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.EditUserToCol (Appweb)'
+2020-10-14 20:33:51.805 +03:00 [INF] Request finished in 187.6755ms 200 text/html; charset=utf-8
+2020-10-14 20:34:03.790 +03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Users/CreateNewCol multipart/form-data; boundary=---------------------------7e42fb320c7e 2036
+2020-10-14 20:34:03.797 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:03.801 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:03.836 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:03.837 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.CreateNewCol (Appweb)'
+2020-10-14 20:34:03.862 +03:00 [INF] Route matched with {action = "CreateNewCol", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewCol(System.Collections.Generic.List`1[Appweb.ViewModels.UserColViewModel], System.String, Microsoft.AspNetCore.Http.IFormFile, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:03.925 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:34:04.148 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Collections] ([CollectionID], [CountItem], [Description], [ImageUrl], [Name], [Theme], [Type1], [Type2], [Type3], [Type4], [Type5], [Type6], [Type7], [Type8], [Type9], [UserID])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2020-10-14 20:34:04.154 +03:00 [INF] Executing RedirectResult, redirecting to /Users/Index1.
+2020-10-14 20:34:04.155 +03:00 [INF] Executed action Appweb.Controllers.UsersController.CreateNewCol (Appweb) in 292.1593ms
+2020-10-14 20:34:04.155 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.CreateNewCol (Appweb)'
+2020-10-14 20:34:04.156 +03:00 [INF] Request finished in 367.276ms 302 
+2020-10-14 20:34:04.173 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/Index1  
+2020-10-14 20:34:04.175 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:04.176 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:04.180 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:04.180 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.Index1 (Appweb)'
+2020-10-14 20:34:04.180 +03:00 [INF] Route matched with {action = "Index1", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index1() on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:04.183 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:34:04.188 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:34:04.209 +03:00 [INF] Executing ViewResult, running view Index1.
+2020-10-14 20:34:04.228 +03:00 [INF] Executed ViewResult - view Index1 executed in 19.2585ms.
+2020-10-14 20:34:04.228 +03:00 [INF] Executed action Appweb.Controllers.UsersController.Index1 (Appweb) in 47.7097ms
+2020-10-14 20:34:04.228 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.Index1 (Appweb)'
+2020-10-14 20:34:04.229 +03:00 [INF] Request finished in 56.5536ms 200 text/html; charset=utf-8
+2020-10-14 20:34:04.243 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Files/notfound.jpg  
+2020-10-14 20:34:04.282 +03:00 [INF] Sending file. Request path: '/Files/notfound.jpg'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\Files\notfound.jpg'
+2020-10-14 20:34:04.282 +03:00 [INF] Request finished in 38.7986ms 200 image/jpeg
+2020-10-14 20:34:05.601 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/Collections/730f768a-860f-4fb4-a0e9-86b5034795d2  
+2020-10-14 20:34:05.605 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:05.608 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:05.613 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:05.614 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.Collections (Appweb)'
+2020-10-14 20:34:05.626 +03:00 [INF] Route matched with {action = "Collections", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Collections(System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:05.662 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+WHERE [c].[CollectionID] = @__p_0
+2020-10-14 20:34:05.683 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LikeID], [l].[Count], [l].[ItemID], [l].[UserID]
+FROM [Likes] AS [l]
+2020-10-14 20:34:05.698 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[ItemID], [i].[CollectionID], [i].[Description], [i].[Field1], [i].[Field2], [i].[Field3], [i].[Field4], [i].[Field5], [i].[Field6], [i].[Field7], [i].[Field8], [i].[Field9], [i].[Name]
+FROM [Items] AS [i]
+2020-10-14 20:34:05.712 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[ItemID], [i].[CollectionID], [i].[Description], [i].[Field1], [i].[Field2], [i].[Field3], [i].[Field4], [i].[Field5], [i].[Field6], [i].[Field7], [i].[Field8], [i].[Field9], [i].[Name]
+FROM [Items] AS [i]
+WHERE [i].[CollectionID] = @__id_0
+2020-10-14 20:34:05.721 +03:00 [INF] Executing ViewResult, running view Collections.
+2020-10-14 20:34:05.774 +03:00 [INF] Executed ViewResult - view Collections executed in 55.6357ms.
+2020-10-14 20:34:05.774 +03:00 [INF] Executed action Appweb.Controllers.UsersController.Collections (Appweb) in 147.4416ms
+2020-10-14 20:34:05.774 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.Collections (Appweb)'
+2020-10-14 20:34:05.775 +03:00 [INF] Request finished in 174.5039ms 200 text/html; charset=utf-8
+2020-10-14 20:34:08.710 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/CreateItem/730f768a-860f-4fb4-a0e9-86b5034795d2  
+2020-10-14 20:34:08.713 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:08.716 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:08.723 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:08.724 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.CreateItem (Appweb)'
+2020-10-14 20:34:08.733 +03:00 [INF] Route matched with {action = "CreateItem", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateItem(System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:08.742 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+WHERE [c].[CollectionID] = @__p_0
+2020-10-14 20:34:08.750 +03:00 [INF] Executing ViewResult, running view CreateItem.
+2020-10-14 20:34:08.863 +03:00 [INF] Executed ViewResult - view CreateItem executed in 116.4602ms.
+2020-10-14 20:34:08.863 +03:00 [INF] Executed action Appweb.Controllers.UsersController.CreateItem (Appweb) in 130.0707ms
+2020-10-14 20:34:08.863 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.CreateItem (Appweb)'
+2020-10-14 20:34:08.864 +03:00 [INF] Request finished in 154.6443ms 200 text/html; charset=utf-8
+2020-10-14 20:34:14.776 +03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Users/CreateItem/730f768a-860f-4fb4-a0e9-86b5034795d2 application/x-www-form-urlencoded 354
+2020-10-14 20:34:14.782 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:14.785 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:14.790 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:14.790 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.CreateItem (Appweb)'
+2020-10-14 20:34:14.809 +03:00 [INF] Route matched with {action = "CreateItem", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateItem(Appweb.ViewModels.CreateItemViewModel, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:14.899 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Items] ([ItemID], [CollectionID], [Description], [Field1], [Field2], [Field3], [Field4], [Field5], [Field6], [Field7], [Field8], [Field9], [Name])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2020-10-14 20:34:14.906 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+WHERE [c].[CollectionID] = @__p_0
+2020-10-14 20:34:14.932 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p15='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Collections] SET [CountItem] = @p0, [Description] = @p1, [ImageUrl] = @p2, [Name] = @p3, [Theme] = @p4, [Type1] = @p5, [Type2] = @p6, [Type3] = @p7, [Type4] = @p8, [Type5] = @p9, [Type6] = @p10, [Type7] = @p11, [Type8] = @p12, [Type9] = @p13, [UserID] = @p14
+WHERE [CollectionID] = @p15;
+SELECT @@ROWCOUNT;
+2020-10-14 20:34:14.941 +03:00 [INF] Executing RedirectResult, redirecting to /Users/Collections/730f768a-860f-4fb4-a0e9-86b5034795d2.
+2020-10-14 20:34:14.941 +03:00 [INF] Executed action Appweb.Controllers.UsersController.CreateItem (Appweb) in 131.8502ms
+2020-10-14 20:34:14.941 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.CreateItem (Appweb)'
+2020-10-14 20:34:14.942 +03:00 [INF] Request finished in 166.1782ms 302 
+2020-10-14 20:34:14.957 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/Collections/730f768a-860f-4fb4-a0e9-86b5034795d2  
+2020-10-14 20:34:14.958 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:14.959 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:14.963 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:14.963 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.Collections (Appweb)'
+2020-10-14 20:34:14.963 +03:00 [INF] Route matched with {action = "Collections", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Collections(System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:14.967 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+WHERE [c].[CollectionID] = @__p_0
+2020-10-14 20:34:14.968 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LikeID], [l].[Count], [l].[ItemID], [l].[UserID]
+FROM [Likes] AS [l]
+2020-10-14 20:34:14.969 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[ItemID], [i].[CollectionID], [i].[Description], [i].[Field1], [i].[Field2], [i].[Field3], [i].[Field4], [i].[Field5], [i].[Field6], [i].[Field7], [i].[Field8], [i].[Field9], [i].[Name]
+FROM [Items] AS [i]
+2020-10-14 20:34:14.979 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[ItemID], [i].[CollectionID], [i].[Description], [i].[Field1], [i].[Field2], [i].[Field3], [i].[Field4], [i].[Field5], [i].[Field6], [i].[Field7], [i].[Field8], [i].[Field9], [i].[Name]
+FROM [Items] AS [i]
+WHERE [i].[CollectionID] = @__id_0
+2020-10-14 20:34:14.995 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__it_ItemID_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LikeID], [l].[Count], [l].[ItemID], [l].[UserID]
+FROM [Likes] AS [l]
+WHERE [l].[ItemID] = @__it_ItemID_0
+2020-10-14 20:34:14.996 +03:00 [INF] Executing ViewResult, running view Collections.
+2020-10-14 20:34:15.020 +03:00 [INF] Executed ViewResult - view Collections executed in 24.3542ms.
+2020-10-14 20:34:15.020 +03:00 [INF] Executed action Appweb.Controllers.UsersController.Collections (Appweb) in 56.9308ms
+2020-10-14 20:34:15.021 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.Collections (Appweb)'
+2020-10-14 20:34:15.021 +03:00 [INF] Request finished in 64.3223ms 200 text/html; charset=utf-8
+2020-10-14 20:34:16.460 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/EditComment/23322d59-dae8-4c14-966a-add9f9c30d9f  
+2020-10-14 20:34:16.466 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:16.468 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:16.474 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:16.475 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.EditComment (Appweb)'
+2020-10-14 20:34:16.489 +03:00 [INF] Route matched with {action = "EditComment", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditComment(System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:16.516 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[Count], [c].[ItemID], [c].[Text], [c].[UserID]
+FROM [Comments] AS [c]
+2020-10-14 20:34:16.531 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:34:16.538 +03:00 [INF] Executing ViewResult, running view EditComment.
+2020-10-14 20:34:16.582 +03:00 [INF] Executed ViewResult - view EditComment executed in 45.9852ms.
+2020-10-14 20:34:16.582 +03:00 [INF] Executed action Appweb.Controllers.UsersController.EditComment (Appweb) in 92.6001ms
+2020-10-14 20:34:16.583 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.EditComment (Appweb)'
+2020-10-14 20:34:16.583 +03:00 [INF] Request finished in 123.1589ms 200 text/html; charset=utf-8
+2020-10-14 20:34:16.598 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/chat.js  
+2020-10-14 20:34:16.598 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/signalr/dist/browser/signalr.js  
+2020-10-14 20:34:16.643 +03:00 [INF] Sending file. Request path: '/js/chat.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\js\chat.js'
+2020-10-14 20:34:16.643 +03:00 [INF] Request finished in 45.9349ms 200 application/javascript
+2020-10-14 20:34:16.722 +03:00 [INF] Sending file. Request path: '/js/signalr/dist/browser/signalr.js'. Physical path: 'D:\VS labs and progs\Appweb\Appweb\wwwroot\js\signalr\dist\browser\signalr.js'
+2020-10-14 20:34:16.723 +03:00 [INF] Request finished in 125.3838ms 200 application/javascript
+2020-10-14 20:34:16.783 +03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/comment/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-10-14 20:34:16.788 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:16.791 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:16.795 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:16.795 +03:00 [INF] Executing endpoint '/comment/negotiate'
+2020-10-14 20:34:16.824 +03:00 [INF] Executed endpoint '/comment/negotiate'
+2020-10-14 20:34:16.825 +03:00 [INF] Request finished in 42.1376ms 200 application/json
+2020-10-14 20:34:16.873 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/comment?id=RVq1w5Z1Jq2jELTbbw0fIw  
+2020-10-14 20:34:16.875 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:16.877 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:16.881 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:16.881 +03:00 [INF] Executing endpoint '/comment'
+2020-10-14 20:34:24.009 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Users/EditComment/23322d59-dae8-4c14-966a-add9f9c30d9f  
+2020-10-14 20:34:24.013 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:24.016 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:24.020 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:24.020 +03:00 [INF] Executing endpoint 'Appweb.Controllers.UsersController.EditComment (Appweb)'
+2020-10-14 20:34:24.021 +03:00 [INF] Route matched with {action = "EditComment", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditComment(System.String) on controller Appweb.Controllers.UsersController (Appweb).
+2020-10-14 20:34:24.023 +03:00 [INF] Executed endpoint '/comment'
+2020-10-14 20:34:24.023 +03:00 [INF] Request finished in 7150.7531ms 101 
+2020-10-14 20:34:24.024 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CommentID], [c].[Count], [c].[ItemID], [c].[Text], [c].[UserID]
+FROM [Comments] AS [c]
+2020-10-14 20:34:24.032 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:34:24.037 +03:00 [INF] Executing ViewResult, running view EditComment.
+2020-10-14 20:34:24.044 +03:00 [INF] Executed ViewResult - view EditComment executed in 7.1226ms.
+2020-10-14 20:34:24.044 +03:00 [INF] Executed action Appweb.Controllers.UsersController.EditComment (Appweb) in 22.8977ms
+2020-10-14 20:34:24.044 +03:00 [INF] Executed endpoint 'Appweb.Controllers.UsersController.EditComment (Appweb)'
+2020-10-14 20:34:24.045 +03:00 [INF] Request finished in 35.3468ms 200 text/html; charset=utf-8
+2020-10-14 20:34:24.057 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css  
+2020-10-14 20:34:24.057 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css  
+2020-10-14 20:34:24.058 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/signalr/dist/browser/signalr.js  
+2020-10-14 20:34:24.059 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/chat.js  
+2020-10-14 20:34:24.059 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js  
+2020-10-14 20:34:24.060 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
+2020-10-14 20:34:24.061 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0  
+2020-10-14 20:34:24.071 +03:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2020-10-14 20:34:24.071 +03:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2020-10-14 20:34:24.071 +03:00 [INF] The file /css/site.css was not modified
+2020-10-14 20:34:24.072 +03:00 [INF] The file /js/site.js was not modified
+2020-10-14 20:34:24.072 +03:00 [INF] The file /js/chat.js was not modified
+2020-10-14 20:34:24.072 +03:00 [INF] The file /js/signalr/dist/browser/signalr.js was not modified
+2020-10-14 20:34:24.072 +03:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2020-10-14 20:34:24.073 +03:00 [INF] Request finished in 13.6337ms 304 application/javascript
+2020-10-14 20:34:24.073 +03:00 [INF] Request finished in 16.0347ms 304 text/css
+2020-10-14 20:34:24.073 +03:00 [INF] Request finished in 15.8231ms 304 application/javascript
+2020-10-14 20:34:24.074 +03:00 [INF] Request finished in 13.6543ms 304 application/javascript
+2020-10-14 20:34:24.076 +03:00 [INF] Request finished in 14.4742ms 304 application/javascript
+2020-10-14 20:34:24.074 +03:00 [INF] Request finished in 14.8856ms 304 application/javascript
+2020-10-14 20:34:24.076 +03:00 [INF] Request finished in 19.5967ms 304 text/css
+2020-10-14 20:34:24.168 +03:00 [INF] Request starting HTTP/2 POST https://localhost:5001/comment/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-10-14 20:34:24.170 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:24.171 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:24.175 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:24.176 +03:00 [INF] Executing endpoint '/comment/negotiate'
+2020-10-14 20:34:24.177 +03:00 [INF] Executed endpoint '/comment/negotiate'
+2020-10-14 20:34:24.177 +03:00 [INF] Request finished in 9.5664ms 200 application/json
+2020-10-14 20:34:24.237 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:5001/comment?id=_X7ApPqu-wvuL8u55l_7KA  
+2020-10-14 20:34:24.239 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:34:24.240 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:34:24.247 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:34:24.248 +03:00 [INF] Executing endpoint '/comment'
+2020-10-14 20:37:15.654 +03:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-14 20:37:15.698 +03:00 [INF] Entity Framework Core 3.1.8 initialized 'ApplicationContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-10-14 20:37:15.702 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-10-14 20:37:15.738 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2020-10-14 20:37:15.739 +03:00 [INF] Executing endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:37:15.739 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Appweb.Controllers.HomeController (Appweb).
+2020-10-14 20:37:15.744 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CollectionID], [c].[CountItem], [c].[Description], [c].[ImageUrl], [c].[Name], [c].[Theme], [c].[Type1], [c].[Type2], [c].[Type3], [c].[Type4], [c].[Type5], [c].[Type6], [c].[Type7], [c].[Type8], [c].[Type9], [c].[UserID]
+FROM [Collections] AS [c]
+2020-10-14 20:37:15.752 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[TagID], [t].[CollectionID], [t].[Main], [t].[Text]
+FROM [Tags] AS [t]
+2020-10-14 20:37:15.754 +03:00 [INF] Executing ViewResult, running view Index.
+2020-10-14 20:37:15.765 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[DateLog], [a].[DateReg], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2020-10-14 20:37:15.785 +03:00 [INF] Executed ViewResult - view Index executed in 31.7344ms.
+2020-10-14 20:37:15.812 +03:00 [INF] Executed action Appweb.Controllers.HomeController.Index (Appweb) in 72.6259ms
+2020-10-14 20:37:15.813 +03:00 [INF] Executed endpoint 'Appweb.Controllers.HomeController.Index (Appweb)'
+2020-10-14 20:37:15.815 +03:00 [INF] Request finished in 161.109ms 200 text/html; charset=utf-8
+2020-10-14 20:37:15.815 +03:00 [INF] Executed endpoint '/comment'
+2020-10-14 20:37:15.816 +03:00 [INF] Request finished in 171578.848ms 101 

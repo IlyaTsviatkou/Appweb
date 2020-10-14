@@ -19,10 +19,17 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Security.Google" Version="4.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="NLog" Version="4.7.5" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="Error\" />
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
     <Folder Include="wwwroot\js\signalr\dist\browser\" />
   </ItemGroup>
 

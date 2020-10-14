@@ -20,16 +20,16 @@ namespace Appweb.Models
         {
                 Database.EnsureCreated(); 
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-           /* modelBuilder.Entity<User>().ToTable("User");
+           modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Like>().ToTable("Like");
             modelBuilder.Entity<Comment>().ToTable("Comment");
             modelBuilder.Entity<Collection>().ToTable("Collection");
             modelBuilder.Entity<Tag>().ToTable("Tag");
-            modelBuilder.Entity<Item>().ToTable("Item");*/
-        }
+            modelBuilder.Entity<Item>().ToTable("Item");
+        }*/
 
     }
 
