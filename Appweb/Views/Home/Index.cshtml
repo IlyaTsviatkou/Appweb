@@ -1,5 +1,7 @@
-﻿@model Appweb.ViewModels.ItemTagCol
+﻿@model Appweb.Domain.Core.ItemTagCol
 @using Microsoft.AspNetCore.Identity;
+@using Appweb.Domain.Core;
+@using Appweb.Infrastructure.Data;
 @inject SignInManager<User> signInManager
 @inject UserManager<User> userManager
 @inject ApplicationContext context
@@ -23,10 +25,10 @@
 }
 else
 {
-<div class="indexout1">
-    <a asp-controller="Account" class="btn btn-outline-dark" asp-action="Login">Login</a>
-    <a asp-controller="Account" class="btn btn-outline-dark" asp-action="Register">Registration</a>
-</div>
+    <div class="indexout1">
+        <a asp-controller="Account" class="btn btn-outline-dark" asp-action="Login">Login</a>
+        <a asp-controller="Account" class="btn btn-outline-dark" asp-action="Register">Registration</a>
+    </div>
 }
 <div class="indexout2">
     <h5>THE BIGGEST COLLECTIONS</h5>

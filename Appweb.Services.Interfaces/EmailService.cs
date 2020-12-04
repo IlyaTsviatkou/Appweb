@@ -1,7 +1,7 @@
 ﻿using MimeKit;
 using MailKit.Net.Smtp;
 using System.Threading.Tasks;
-namespace Appweb.Services
+namespace Appweb.Services.Business
 {
     public class EmailService
     {

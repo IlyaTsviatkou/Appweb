@@ -1,11 +1,11 @@
-﻿using Appweb.Models;
+﻿using Appweb.Domain.Core;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Appweb.Data
+namespace Appweb.Infrastructure.Data
 {
     public class RoleInitializer
     {

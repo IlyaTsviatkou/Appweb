@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Appweb.ViewModels;
 using Appweb.Views;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
 using Microsoft.AspNetCore.Mvc;
-using Appweb.Models;
+using Appweb.Domain.Core;
 
 namespace Appweb.Controllers
 {

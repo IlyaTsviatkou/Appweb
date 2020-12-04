@@ -5,13 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Appweb.Models;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Appweb.ViewModels;
 using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore;
+using Appweb.Domain.Core;
+using Appweb.Infrastructure.Data;
 
 namespace Appweb.Controllers
 {
@@ -24,40 +25,14 @@ namespace Appweb.Controllers
         RoleManager<IdentityRole> roleManager;
 
 
-        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager, ApplicationContext context, RoleManager<IdentityRole> roleManager)
+        public HomeController( UserManager<User> userManager, ApplicationContext context)
         {
-            _logger = logger;
+            
             _userManager = userManager;
             _context = context;
-            /* this.roleManager = roleManager;
-             var a = _context.Users.ToList().Count;
-             var r = _context.Roles.ToList().Count;
-
-             if (a == 0)
-             {
-                 var b = DateTime.Now;
-                 User user = new User { Email = "Admin@Admin.com", UserName = "Admin@Admin.com", Name = "Admin", DateLog = b, DateReg = b, };
-                 _userManager.CreateAsync(user, "Admin123");
-
-             }
-             if (r == 0)
-             {
-                 IdentityRole identityRole = new IdentityRole
-                 {
-                     Name = "Admin"
-                 };
-                 var t = roleManager.CreateAsync(identityRole);
-
-
-
-                 if (t.IsCanceled)
-                 {
-                     var s = _context.Users.ToList()[0];
-                     _userManager.AddToRoleAsync(s, identityRole.Name);
-                 }
-
-             }*/
+        
         }
+        
 
 
         public IActionResult Index()
@@ -180,7 +155,7 @@ namespace Appweb.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return base.View(new Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return base.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

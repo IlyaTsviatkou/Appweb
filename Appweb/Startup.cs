@@ -1,4 +1,3 @@
-using Appweb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +8,10 @@ using System;
 using Appweb.Hubs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Appweb.Infrastructure.Data;
+using Appweb.Domain.Core;
+using Appweb.Services.Business;
+//using Microsoft.Extensions.Azure;
 
 namespace Appweb
 {
@@ -28,8 +31,8 @@ namespace Appweb
         {
             
             services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Appweb")));
+            
 
             services.AddIdentity<User, IdentityRole>(opts => {
                 opts.Password.RequireNonAlphanumeric = false; 
@@ -48,15 +51,22 @@ namespace Appweb
 
                   options.ClientId = "514947319812-v7us8nlcqk1h7fupflf363jf0n2sik85.apps.googleusercontent.com";
                   options.ClientSecret = "0H03aJwJCs8sVxNAo3D5JLf_";
-              })
-              .AddFacebook(facebookOptions =>
-              {
-                  facebookOptions.AppId = "3365135373515119";
-                  facebookOptions.AppSecret = "211f962dea3b463998d061d4f09763f0";
               });
-        
+              /*.AddFacebook(facebookOptions =>
+              {
+                  facebookOptions.AppId = "963468734148402";
+                  facebookOptions.AppSecret = "b022e8014d1435cf516b4938d1d72580";
+              });*/
+            services.AddScoped<ArticleRepository>();
+            services.AddTransient<EmailService>();
+            services.AddSingleton<ImageService>();
 
-    }
+            /*services.AddAzureClients(builder =>
+            {
+                builder.AddBlobServiceClient(Configuration["ConnectionStrings:DefaultConnection1"]);
+            });*/
+
+        }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

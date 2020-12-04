@@ -1,6 +1,6 @@
 using System;
 
-namespace Appweb.Models
+namespace Appweb.Domain.Core
 {
     public class ErrorViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Appweb.Views
+namespace Appweb.Domain.Core
 {
     public class RegisterViewModel
     {

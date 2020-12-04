@@ -1,9 +1,6 @@
-﻿@model Appweb.ViewModels.CommentViewModel
-
+﻿@model Appweb.Domain.Core.CommentViewModel
 @using Microsoft.AspNetCore.Identity;
-
-@using Appweb.Models;
-
+@using Appweb.Domain.Core;
 @inject SignInManager<User> signInManager
 
 @{
@@ -12,26 +9,26 @@
 
 }
 
-    <div class="card">
-        <form method="post">
-            <div class="card-header" id="userid" value="@Model.UserID">
+<div class="card">
+    <form method="post">
+        <div class="card-header" id="userid" value="@Model.UserID">
 
 
-                <label id="name-user" value="@user.UserName">@user.UserName</label>
-            </div>
-            <div class="card-body" id="itemid" value="@Model.ItemID">
-                <label asp-for="@Model.Text" class="control-label">Text</label>
-                <input type="text" asp-route-id="@Model.ItemID" id="Text" value="" asp-for="@Model.Text" class="form-control" />
-            </div>
+            <label id="name-user" value="@user.UserName">@user.UserName</label>
+        </div>
+        <div class="card-body" id="itemid" value="@Model.ItemID">
+            <label asp-for="@Model.Text" class="control-label">Text</label>
+            <input type="text" asp-route-id="@Model.ItemID" id="Text" value="" asp-for="@Model.Text" class="form-control" />
+        </div>
 
-        </form>
-        <div class="card-footer">
-            <div>
-                <input type="submit" id="sendButton" value="Create" class="btn btn-outline-primary" style="width:auto" />
-                <a asp-action="Index1" class="btn btn-outline-danger" style="width:auto">Cancel</a>
-            </div>
+    </form>
+    <div class="card-footer">
+        <div>
+            <input type="submit" id="sendButton" value="Create" class="btn btn-outline-primary" style="width:auto" />
+            <a asp-action="Index1" class="btn btn-outline-danger" style="width:auto">Cancel</a>
         </div>
     </div>
+</div>
 <div id="chat">
 
 

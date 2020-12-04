@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Appweb.Views;
-using Appweb.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Appweb.Domain.Core;
 
 namespace Appweb.Controllers
 {
@@ -175,7 +175,7 @@ namespace Appweb.Controllers
                 ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
                 ViewBag.ErrorMessage = "Please contact support ";
 
-                return View("Error");
+                return View("ErrorPro");
             }
 
             return View("Login", loginViewModel);

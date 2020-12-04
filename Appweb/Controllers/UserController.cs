@@ -2,17 +2,18 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using Appweb.Models;
+using Appweb.Domain.Core;
 using Appweb.Views;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using Appweb.ViewModels;
+
 using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using Appweb.Services;
+using Appweb.Infrastructure.Data;
+using Appweb.Services.Business;
 
 namespace Appweb.Controllers
 {
@@ -79,7 +80,8 @@ namespace Appweb.Controllers
             return View(user);
         }
         public IActionResult Create() => View();
-        public IActionResult ToCollction() => View();
+        public IActionResult ToCollection() => View();
+
         [HttpPost]
         public IActionResult ToCollection(string id)
         {
@@ -388,7 +390,13 @@ namespace Appweb.Controllers
         public async Task<IActionResult> CreateNewCol(List<UserColViewModel> model, string field1, IFormFile uploadedFile, string field2, string Theme, string field3, string field4, string field5, string field6, string field7, string field8, string field9)
         {
             string path = "";
-            if (uploadedFile != null)
+            if (uploadedFile != null &&(
+                        uploadedFile.ContentType.ToLower() == "image/jpg" ||
+                        uploadedFile.ContentType.ToLower() == "image/jpeg" ||
+                        uploadedFile.ContentType.ToLower() == "image/pjpeg" ||
+                        uploadedFile.ContentType.ToLower() == "image/gif" ||
+                        uploadedFile.ContentType.ToLower() == "image/x-png" ||
+                        uploadedFile.ContentType.ToLower() == "image/png"))
             {
                 // путь к папке Files
                 path = "/Files/" + uploadedFile.FileName;

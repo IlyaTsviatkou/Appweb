@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Appweb.Models;
-using Appweb.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +12,9 @@ using NLog;
 
 using Serilog;
 using Serilog.Events;
+using Appweb.Infrastructure.Data;
+using Appweb.Domain.Core;
+
 namespace Appweb
 {
     public class Program

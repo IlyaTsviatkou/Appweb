@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Appweb.Domain.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace Appweb.Models
+namespace Appweb.Infrastructure.Data
 {
     public class ApplicationContext : IdentityDbContext<User>
     {
@@ -20,7 +21,7 @@ namespace Appweb.Models
         {
                 Database.EnsureCreated(); 
         }
-       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
            modelBuilder.Entity<User>().ToTable("User");

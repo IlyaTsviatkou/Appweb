@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace Appweb.Models
+namespace Appweb.Domain.Core
 {
     public class User : IdentityUser
     {

@@ -1,10 +1,10 @@
-﻿using Appweb.Models;
+﻿using Appweb.Domain.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Appweb.ViewModels
+namespace Appweb.Domain.Core
 {
     public class CreateCollectionViewModel
     {
