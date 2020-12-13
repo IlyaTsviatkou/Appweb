@@ -2,28 +2,33 @@
 @using Appweb.Domain.Core;
 @using Appweb.Infrastructure.Data;
 @model Appweb.Domain.Core.User;
-@inject SignInManager<User> signInManager;
-@inject ApplicationContext context;
-<div class="bs-tooltip-bottom">
-    <a class="btn btn-outline-primary" asp-controller="Users" asp-action="EditUserToCol">AddCollection</a>
-</div>
+@inject SignInManager<User> signInManager
+@inject ApplicationContext context
 
-@if (Model.Collections != null)
-{
-    <div>
+    <div class="bs-tooltip-bottom">
+        <a class="btn btn-outline-primary" asp-controller="Users" asp-action="EditUserToCol">AddCollection</a>
+    </div>
 
+
+<div>
+
+    @if (Model.Collections != null)
+    {
         @foreach (var user in Model.Collections)
         {
             if (user.Name != "")
             {
+
+
                 <a class="btn" asp-controller="Users" asp-action="Collections" asp-route-id="@user.CollectionID">
                     <p>@user.Name</p>
                     <img src="@Url.Content(context.Collections.Find(user.CollectionID).ImageUrl)" width="130" height="130">
 
                 </a>
-                @* <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="Collections" asp-route-id="@user.CollectionID">@user.Name</a>*@
+
+                @*  <a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="Collections" asp-route-id="@user.CollectionID">@user.Name</a>*@
+
             }
         }
-
-    </div>
-}
+    }
+</div>

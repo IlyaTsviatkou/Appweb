@@ -17,15 +17,18 @@ namespace Appweb.Domain.Core
         public string Description { get; set; }
         public string? Field1 { get; set; }
         public string? Field2 { get; set; }
-        public string? Field3 { get; set; }
-        public string? Field4 { get; set; }
-        public string? Field5 { get; set; }
-        public string? Field6 { get; set; }
-        public string? Field7 { get; set; }
-        public string? Field8 { get; set; }
-        public string? Field9 { get; set; }
+
         public ICollection<Like> Likes { get; set; }
         public Collection Collections { get; set; }
+
+        public List<UserItem> UserItems { get; set; }
+       // public virtual ICollection<User> Users { get; set; }
+        public Item()
+        {
+            this.UserItems = new List<UserItem>();
+        }
+
+
 
     }
 }

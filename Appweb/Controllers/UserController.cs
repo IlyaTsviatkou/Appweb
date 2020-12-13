@@ -14,6 +14,9 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Appweb.Infrastructure.Data;
 using Appweb.Services.Business;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace Appweb.Controllers
 {
@@ -34,50 +37,21 @@ namespace Appweb.Controllers
 
         public IActionResult Index() => View(_userManager.Users.ToList());
 
-        public async Task<IActionResult> Index1()
+        public async Task<IActionResult> Index2()
         {
-            var collection = _context.Collections.ToList();
-
+      
             var id = _userManager.GetUserId(User);
-            User user = await _userManager.FindByIdAsync(id);
+            User user = _context.Users.Include(col => col.Collections)
+                .Single(i => i.Id == id);
 
-            Collection col = new Collection { Name = "", Description = "", CountItem = 0, ImageUrl = "", UserID = id };
-            if (user != null)
-                foreach (Collection s in collection)
-                {
-                    if (user.Collections == null)
-                    {
-                        _context.Collections.Add(col);
-                        _context.SaveChanges();
-
-                        user.Collections.Add(s);
-                    }
-                    else
-                        user.Collections.Add(s);
-                }
-            else
-            {
-                User user2 = new User();
-                user2.Collections = collection;
-                return View(user2);
-            }
             return View(user);
         }
 
-        public async Task<IActionResult> Index2()
+        public async Task<IActionResult> Index1()
         {
-            var collection = _context.Collections.ToList();
-
-            var id = _userManager.GetUserId(User);
-            User user = await _userManager.FindByIdAsync(id);
-            foreach (Collection s in collection)
-            {
-                if (user.Collections == null)
-                    return View(user);
-                if (user.Id == s.UserID)
-                    user.Collections.Add(s);
-            }
-            return View(user);
+            var col = _context.Collections.ToList();
+            
+            return View(col);
         }
         public IActionResult Create() => View();
         public IActionResult ToCollection() => View();
@@ -196,7 +170,7 @@ namespace Appweb.Controllers
             if (ModelState.IsValid)
             {
 
-                return RedirectToAction("Index1");
+                return RedirectToAction("Index2");
 
             }
             return View(model);
@@ -207,14 +181,28 @@ namespace Appweb.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
-            User user = await _userManager.FindByIdAsync(id);
+            User user = _context.Users.Include(col => col.Collections)
+                .ThenInclude(i => i.Items)
+                .ThenInclude(ui=>ui.UserItems)
+                .Single(d=>d.Id==id);
             EmailService emailService = new EmailService();
             
            // return RedirectToAction("Index");
             if (user != null)
             {
                 await emailService.SendEmailAsync(user.Email, "Предупреждение", "Администратор удалил ваш аккаунт: "+user.UserName);
-                await _userManager.DeleteAsync(user);
+                _context.Users.Remove(user);
+                _context.Collections.RemoveRange(user.Collections);
+                foreach (var i in user.Collections)
+                {
+                    _context.Items.RemoveRange(i.Items);
+                    foreach (var ii in i.Items)
+                    {
+                        ii.UserItems.Clear();
+                    }
+                }
+                _context.SaveChanges();
+               // await _userManager.DeleteAsync(user);
 
             }
             return RedirectToAction("Index");
@@ -224,13 +212,13 @@ namespace Appweb.Controllers
         public async Task<IActionResult> EditUserToCol()
         {
 
-            var model = new List<UserColViewModel>();
-
-            foreach (var user in _userManager.Users)
+            var model = new UserColViewModel();
+            var id = _userManager.GetUserId(User);
+            User user = _context.Users.Include(col => col.Collections)
+                .Single(i => i.Id == id);
+            var userColViewModel = new UserColViewModel
             {
-                var userColViewModel = new UserColViewModel
-                {
-                    UserId = user.Id,
+                UserId = user.Id,
                     UserName = user.UserName
                 };
 
@@ -240,37 +228,59 @@ namespace Appweb.Controllers
                 userColViewModel.Plant = false;
                 userColViewModel.Phone = false;
                 userColViewModel.Car = false;
-                model.Add(userColViewModel);
-            }
+                model = userColViewModel;
+            
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditUserToCol(List<UserColViewModel> model)
+        public async Task<IActionResult> EditUserToCol(UserColViewModel model)
         {
 
-            for (int i = 0; i < model.Count; i++)
-            {
-                var user = await _userManager.FindByIdAsync(model[i].UserId);
+               // var user = await _userManager.FindByIdAsync(model[i].UserId);
+                var id = _userManager.GetUserId(User);
+                User user = _context.Users.Include(col => col.Collections)
+                    .Single(i => i.Id == id);
+
                 IdentityResult result = null;
 
-                if (model[i].IsSelected)
-                {
-                    Collection col = new Collection { Name = model[0].Name, Description = model[0].Description, CountItem = 0, UserID = model[i].UserId };
+                    Collection col = new Collection { Name = model.Name, Description = model.Description, CountItem = 0, UserID = model.UserId };
                     _context.Collections.Add(col);
                     _context.SaveChanges();
                     return RedirectToAction("Index1");
-                }
 
-
-
-            }
-            return RedirectToAction("Index1");
         }
+        ////////////////////////////////////////////////////////////////////BasketAdd
+       
+        public async Task<IActionResult> AddToBasket(string id)
+        {
+          
+            User  user2 = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+            var user = _context.Users.Include(c => c.UserItems)
+                           .ThenInclude(sc => sc.Item)
+                           .Single(id => id.Id == user2.Id);
+            Item  purchase = await _context.Items.FindAsync(id);
+            UserItem ui = new UserItem {Item=purchase,User= user};
+            try {
+                user.UserItems.Add(ui);
+                _context.SaveChanges();
+            }
+            catch (Exception ex) { }
+           // _context.UserItems.Add(ui);
+           
+           
+            // await _userManager.UpdateAsync(user2);
+            //
+            /*  if (result.Succeeded)
+              {*/
+                if (purchase.CollectionID == null)
+                {
+                    return NotFound();
+                }
+            return RedirectToAction("Collections", new { Id = purchase.CollectionID });
 
-
-
+        }
         ////////////////////////////////////////////////////////////////////Comment
         public async Task<IActionResult> EditComment(string id)
         {
@@ -296,7 +306,7 @@ namespace Appweb.Controllers
             b = sortedUsers.ToList();
 
 
-
+            model.CollectionID = _context.Items.Find(id).CollectionID;
             model.Comments = b;
             model.Comments = b;
             User user2 = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
@@ -307,23 +317,22 @@ namespace Appweb.Controllers
            
         }
         [HttpPost]
-        public async Task<IActionResult> EditComment(CommentViewModel model, string id)
-
+        public ActionResult EditComment2(CommentViewModel model, string id)
         {
-            
-                Comment model2 = new Comment { ItemID = id, UserID = _userManager.GetUserId(User), Text = model.Text };
 
-                var a = _context.Comments.ToList();
-                List<Comment> b = new List<Comment>();
+            Comment model2 = new Comment { ItemID = id, UserID = _userManager.GetUserId(User), Text = model.Text };
 
-                foreach (Comment s in a)
+            var a = _context.Comments.ToList();
+            List<Comment> b = new List<Comment>();
+
+            foreach (Comment s in a)
+            {
+                if (s.ItemID == id)
                 {
-                    if (s.ItemID == id)
-                    {
-                        b.Add(s);
-                    }
+                    b.Add(s);
                 }
-            if (model.Text !=null || model.Text!="")
+            }
+            if (model.Text != null || model.Text != "")
             {
                 if (b.Count != 0)
                 {
@@ -348,15 +357,14 @@ namespace Appweb.Controllers
                     b.Add(model2);
                 }
             }
-
+            model.CollectionID = _context.Items.Find(id).CollectionID;
             model.Comments = b;
             model.UserID = _userManager.GetUserId(User);
             model.ItemID = id;
-            var user = await _userManager.FindByIdAsync(model.UserID);
+            User user = _context.Users.Find(model.UserID);
             model.UserName = user.UserName;
-
-
             return View(model);
+
         }
 
         ////////////////////////////////////////////////////////////////////ColToItem
@@ -364,11 +372,12 @@ namespace Appweb.Controllers
         public async Task<IActionResult> CreateNewCol()
         {
 
-            var model = new List<UserColViewModel>();
+            var model = new UserColViewModel();
+            var id = _userManager.GetUserId(User);
+            User user = _context.Users.Include(col => col.Collections)
+                .Single(i => i.Id == id);
 
-            foreach (var user in _userManager.Users)
-            {
-                var userColViewModel = new UserColViewModel
+            var userColViewModel = new UserColViewModel
                 {
                     UserId = user.Id,
                     UserName = user.UserName
@@ -380,14 +389,14 @@ namespace Appweb.Controllers
                 userColViewModel.Plant = false;
                 userColViewModel.Phone = false;
                 userColViewModel.Car = false;
-                model.Add(userColViewModel);
-            }
+                model = userColViewModel;
+            
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNewCol(List<UserColViewModel> model, string field1, IFormFile uploadedFile, string field2, string Theme, string field3, string field4, string field5, string field6, string field7, string field8, string field9)
+        public async Task<IActionResult> CreateNewCol(UserColViewModel model, string field1, IFormFile uploadedFile, string field2, string Theme)
         {
             string path = "";
             if (uploadedFile != null &&(
@@ -413,41 +422,23 @@ namespace Appweb.Controllers
                 path = "/Files/notfound.jpg";
             }
 
-            for (int i = 0; i < model.Count; i++)
-            {
-                var user = await _userManager.FindByIdAsync(model[i].UserId);
-                IdentityResult result = null;
 
-                if (model[i].IsSelected)
-                {
                     Collection col = new Collection
                     {
                         Type1 = field1,
                         Type2 = field2,
-                        Type3 = field3,
-                        Type4 = field4,
-                        Type5 = field5,
-                        Type6 = field6,
-                        Type7 = field7,
-                        Type8 = field8,
-                        Type9 = field9,
                         Theme = Theme,
                         ImageUrl = path,
-                        Name = model[0].Name,
-                        Description = model[0].Description,
+                        Name = model.Name,
+                        Description = model.Description,
                         CountItem = 0,
 
-                        UserID = model[i].UserId
+                        UserID = model.UserId
                     };
                     _context.Collections.Add(col);
                     _context.SaveChanges();
-                    return RedirectToAction("Index1");
-                }
-
-
-
-            }
-            return RedirectToAction("Index1");
+                    return RedirectToAction("Index2");
+      
         }
 
         public IActionResult CreateItem(string id)
@@ -463,19 +454,7 @@ namespace Appweb.Controllers
 
                 aa.Add(b.Type2);
 
-                aa.Add(b.Type3);
 
-                aa.Add(b.Type4);
-
-                aa.Add(b.Type5);
-
-                aa.Add(b.Type6);
-
-                aa.Add(b.Type7);
-
-                aa.Add(b.Type8);
-
-                aa.Add(b.Type9);
                 a.Type = aa;
 
                 return View(a);
@@ -487,7 +466,7 @@ namespace Appweb.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateItem(CreateItemViewModel model1, string Id, string field1, string field2, string field3, string field4, string field5, string field6, string field7, string field8, string field9)
+        public async Task<IActionResult> CreateItem(CreateItemViewModel model1, string Id, string field1, string field2)
         {
             if (ModelState.IsValid)
             {
@@ -496,21 +475,6 @@ namespace Appweb.Controllers
                 item.Field1 = field1;
 
                 item.Field2 = field2;
-
-                item.Field3 = field3;
-
-                item.Field4 = field4;
-
-                item.Field5 = field5;
-
-                item.Field6 = field6;
-
-                item.Field7 = field7;
-
-                item.Field8 = field8;
-
-                item.Field9 = field9;
-
 
 
                 item.Name = model1.Name;
@@ -548,13 +512,6 @@ namespace Appweb.Controllers
             List<string> As = new List<string>();
             As.Add(col.Type1);
             As.Add(col.Type2);
-            As.Add(col.Type3);
-            As.Add(col.Type4);
-            As.Add(col.Type5);
-            As.Add(col.Type6);
-            As.Add(col.Type7);
-            As.Add(col.Type8);
-            As.Add(col.Type9);
             CollectionViewModel model = new CollectionViewModel { ImageUrl = col.ImageUrl, Type = As, CountItem = col.CountItem, Name = col.Name, CollectionID = col.CollectionID, Description = col.Description, UserID = col.UserID, Items = col.Items };
             if (model == null)
             {
@@ -610,13 +567,6 @@ namespace Appweb.Controllers
             List<string> As = new List<string>();
             As.Add(col.Type1);
             As.Add(col.Type2);
-            As.Add(col.Type3);
-            As.Add(col.Type4);
-            As.Add(col.Type5);
-            As.Add(col.Type6);
-            As.Add(col.Type7);
-            As.Add(col.Type8);
-            As.Add(col.Type9);
             model.Type = As;
             model.ImageUrl = col.ImageUrl;
             model.Description = col.Description;
@@ -645,35 +595,7 @@ namespace Appweb.Controllers
             {
                 modelType.Add(plant.Field2); modelT.Add(a.Type2);
             }
-            if (plant.Field3 != "null")
-            {
-                modelType.Add(plant.Field3); modelT.Add(a.Type3);
-            }
-            if (plant.Field4 != "null")
-            {
-                modelType.Add(plant.Field4); modelT.Add(a.Type4);
-            }
-            if (plant.Field5 != "null")
-            {
-                modelType.Add(plant.Field5); modelT.Add(a.Type5);
-            }
-            if (plant.Field6 != "null")
-            {
-                modelType.Add(plant.Field6); modelT.Add(a.Type6);
-            }
-            if (plant.Field7 != "null")
-            {
-                modelType.Add(plant.Field7); modelT.Add(a.Type7);
-            }
-            if (plant.Field8 != "null")
-            {
-                modelType.Add(plant.Field8); modelT.Add(a.Type8);
-            }
-            if (plant.Field9 != "null")
-            {
-                modelType.Add(plant.Field9);
-                modelT.Add(a.Type9);
-            }
+            
             model.Type = modelT;
             model.Field = modelType;
             model.Name = plant.Name;
@@ -681,7 +603,7 @@ namespace Appweb.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> EditItem(EditItemViewModel model1, string Id, string field1, string field2, string field3, string field4, string field5, string field6, string field7, string field8, string field9)
+        public async Task<IActionResult> EditItem(EditItemViewModel model1, string Id, string field1, string field2)
         {
             if (ModelState.IsValid)
             {
@@ -693,19 +615,7 @@ namespace Appweb.Controllers
 
                     plant.Field2 = field2;
 
-                    plant.Field3 = field3;
-
-                    plant.Field4 = field4;
-
-                    plant.Field5 = field5;
-
-                    plant.Field6 = field6;
-
-                    plant.Field7 = field7;
-
-                    plant.Field8 = field8;
-
-                    plant.Field9 = field9;
+         
 
 
                     plant.Name = model1.Name;

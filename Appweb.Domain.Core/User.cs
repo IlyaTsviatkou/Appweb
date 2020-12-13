@@ -15,12 +15,16 @@ namespace Appweb.Domain.Core
 
         
         public ICollection<Collection> Collections { get; set; }
-      
-        /*public List<Book> Books { get; set; }
+
+       // public virtual ICollection<Item> Purchases { get; set; }
+       public List<UserItem> UserItems { get; set; }
         public User()
         {
-            Books = new List<Book>();
-        }*/
+            this.UserItems = new List<UserItem>();
+        }
+
+
+
     }
 }
  

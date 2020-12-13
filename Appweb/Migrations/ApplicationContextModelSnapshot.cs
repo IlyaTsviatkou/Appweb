@@ -46,27 +46,6 @@ namespace Appweb.Migrations
                     b.Property<string>("Type2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type6")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type7")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type8")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type9")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
 
@@ -116,27 +95,6 @@ namespace Appweb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Field2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field6")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field7")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field8")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Field9")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -263,6 +221,21 @@ namespace Appweb.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Appweb.Domain.Core.UserItem", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ItemId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "ItemId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("UserItem");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -415,6 +388,21 @@ namespace Appweb.Migrations
                     b.HasOne("Appweb.Domain.Core.Item", null)
                         .WithMany("Likes")
                         .HasForeignKey("ItemID");
+                });
+
+            modelBuilder.Entity("Appweb.Domain.Core.UserItem", b =>
+                {
+                    b.HasOne("Appweb.Domain.Core.Item", "Item")
+                        .WithMany("UserItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Appweb.Domain.Core.User", "User")
+                        .WithMany("UserItems")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

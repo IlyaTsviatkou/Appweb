@@ -19,6 +19,61 @@
         <form method="post" asp-controller="Account" asp-action="Logout">
             <input type="submit" class="btn btn-outline-dark" value="LogOut" />
         </form>
+        <table class="table">
+            @if (Model.UserItems != null)
+                foreach (UserItem item in Model.UserItems)
+                {
+                    
+            <tr>
+                @if (item.Item != null)
+                {
+                    <th>
+                        @item.Item.Name
+                    </th>
+                    <th>
+                        @item.Item.Description
+                    </th>
+                    @if (item.Item.Field1 != "null")
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item.Field1)
+                        </td>
+                    }
+                    @if (item.Item.Field2 != "null")
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item.Field2)
+                        </td>
+                    }
+              
+
+                    <th>
+                    
+                        <form asp-action="Collections" asp-route-id="@item.Item.CollectionID" method="post">
+                            <a class="btn btn-sm btn-outline-primary" asp-controller="Users" asp-action="Collections" asp-route-id="@item.Item.CollectionID">Collections</a>
+                        </form>
+
+                        <form asp-action="MailRequest" asp-route-id="@item.Item.ItemID" method="post">
+                            @* <a class="btn btn-outline-primary" asp-controller="Home" asp-action="MailRequest" asp-route-id="@item.Item.ItemID">SendToMail</a>*@
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                SendToMail
+
+                            </button>
+                        </form>
+
+                        <form asp-action="DeleteFromBasket" asp-route-id="@item.Item.ItemID" method="post">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </button>
+                        </form>
+                    
+                    </th>
+                }
+            </tr>
+
+                }
+                
+        </table>
     </div>
 
 }

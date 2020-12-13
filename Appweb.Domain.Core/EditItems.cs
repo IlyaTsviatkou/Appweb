@@ -38,6 +38,8 @@ namespace Appweb.Domain.Core
         public string UserID { get; set; }
         public string ItemID { get; set; }
         public string Text { get; set; }
+
+        public string CollectionID { get; set; }
     }
     public class ItemTagCol
     {

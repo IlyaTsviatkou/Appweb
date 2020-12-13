@@ -21,41 +21,48 @@
             <input type="text" asp-route-id="@Model.ItemID" id="Text" value="" asp-for="@Model.Text" class="form-control" />
         </div>
 
-    </form>
-    <div class="card-footer">
-        <div>
-            <input type="submit" id="sendButton" value="Create" class="btn btn-outline-primary" style="width:auto" />
-            <a asp-action="Index1" class="btn btn-outline-danger" style="width:auto">Cancel</a>
+        <input type="hidden" asp-for="@Model.ItemID" value="@Model.ItemID" />
+        <input type="hidden" asp-for="@Model.UserID" value="@Model.UserID" />
+        <div class="card-footer">
+            <div>
+                <input type="submit" asp-controller="Users" asp-action="EditComment" id="sendButton" value="Create" class="btn btn-outline-primary" style="width:auto" />
+                <a asp-controller="Users" asp-action="Collections" asp-route-id="@Model.CollectionID" class="btn btn-outline-danger" style="width:auto">Cancel</a>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 <div id="chat">
 
 
-    @foreach (var a in Model.Comments)
-    {
-        <div class="card">
-            <div class="card-header">
 
-                @{
-                    User user2 = await signInManager.UserManager.FindByIdAsync(a.UserID);
-                }
-                @user2.UserName
-            </div>
-            <div class="card-body">
-
-
-                @a.Text
-            </div>
-        </div>
-        i++;
-    }
     <ul style="min-height:300px;height:auto;background-color:white; border-radius:5px;" id="messagesList">
+
+        @foreach (var a in Model.Comments)
+        {
+        <li>
+            <div class="card">
+                <div class="card-header">
+
+                    @{
+                        User user2 = await signInManager.UserManager.FindByIdAsync(a.UserID);
+                    }
+                    
+                    <label id="name-user" value="@user2.UserName">@user2.UserName</label>
+                </div>
+                <div class="card-body">
+
+
+                    @a.Text
+                </div>
+            </div>
+        </li>
+            i++;
+        }
     </ul>
 
 </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/comment.js"></script>
 <div><p id="response"></p></div>
 
 

@@ -35,7 +35,8 @@ else
 
     @foreach (var mmodel in Model.Collection)
     {
-        var a = (await userManager.FindByIdAsync(mmodel.UserID)).UserName;
+
+        /* var a = (await userManager.FindByIdAsync(mmodel.UserID)).UserName;*/
 
         if (mmodel.Name != "")
         {
@@ -45,9 +46,8 @@ else
 
             </a>
             @*<a class="btn btn-sm btn-primary" asp-controller="Users" asp-action="Collections" asp-route-id="@mmodel.CollectionID">@mmodel.Name</a>*@
-        }
-
-
+           }
+        
     }
 </div>
 <div class="indexout3">

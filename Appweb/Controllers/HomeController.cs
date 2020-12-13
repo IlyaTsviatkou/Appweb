@@ -13,6 +13,8 @@ using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore;
 using Appweb.Domain.Core;
 using Appweb.Infrastructure.Data;
+using Appweb.Services.Business;
+using Org.BouncyCastle.Asn1.Cms;
 
 namespace Appweb.Controllers
 {
@@ -139,12 +141,55 @@ namespace Appweb.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public async Task<IActionResult> Profile()
         {
-            var model = await _userManager.FindByEmailAsync(User.Identity.Name);
+           // var model = await _userManager.FindByEmailAsync(User.Identity.Name);
+            User user = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+            // UserItem ui = await _context.
+            var model = _context.Users.Include(c => c.UserItems)
+                            .ThenInclude(sc => sc.Item)
+                            .Single(id => id.Id == user.Id);
 
             return View(model);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> MailRequest(string id)
+        {
+            Item item = _context.Items.Include(col => col.Collections)
+                .ThenInclude(u => u.Users)
+                .Single(i => i.ItemID == id);
+            User user = item.Collections.Users;
+            User user2 = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+            //User user = await _userManager.FindByIdAsync(id);
+            EmailService emailService = new EmailService();
+
+            // return RedirectToAction("Index");
+            if (user != null)
+            {
+                await emailService.SendEmailAsync(user.Email, "Уведомление о покупке", "Аккаунт " + user2.UserName + " хотел бы купить ваш " + item.Name);
+                
+            }
+            return RedirectToAction("DeleteFromBasket",new { id = id});
+        }
+        [HttpGet]       
+        [HttpPost]
+        public async Task<IActionResult> DeleteFromBasket(string id)
+        {
+            Item item = _context.Items.Include(ui=>ui.UserItems)
+                .ThenInclude(u => u.User)
+                .Where(iid=>iid.ItemID==id)
+                .Single(i => i.ItemID == id);
+            User user = item.UserItems.ElementAt(0).User;
+            User user2 = _context.Users.Include(ui => ui.UserItems)
+                .Single(i => i.Id == user.Id);
+            if (user != null)
+            {
+                user2.UserItems.Remove(user.UserItems.ElementAt(0));
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Profile");
         }
 
         public IActionResult TableUsers()

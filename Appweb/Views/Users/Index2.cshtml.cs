@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Appweb.Views.Users
 {
-    public class Index2Model : PageModel
+    public class Index1Model : PageModel
     {
         public void OnGet()
         {

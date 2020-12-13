@@ -72,48 +72,7 @@
                                 @Html.DisplayFor(modelItem => item.Field2)
                             </td>
                         }
-                        @if (item.Field3 != "null" && item.Field3 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field3)
-                            </td>
-                        }
-                        @if (item.Field4 != "null" && item.Field4 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field4)
-                            </td>
-                        }
-                        @if (item.Field5 != "null" && item.Field5 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field5)
-                            </td>
-                        }
-                        @if (item.Field6 != "null" && item.Field6 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field6)
-                            </td>
-                        }
-                        @if (item.Field7 != "null" && item.Field7 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field7)
-                            </td>
-                        }
-                        @if (item.Field8 != "null" && item.Field8 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field8)
-                            </td>
-                        }
-                        @if (item.Field9 != "null" && item.Field9 != null)
-                        {
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Field9)
-                            </td>
-                        }
+                        
                         @if (signInManager.IsSignedIn(User))
                         {
                             <td>
@@ -132,12 +91,13 @@
 
                                     }
                                     <a class="btn btn-sm btn-outline-primary" asp-action="EditComment" asp-route-id="@item.ItemID">Comments</a>
+                                    <a class="btn btn-sm btn-outline-primary" asp-action="AddToBasket" asp-route-id="@item.ItemID">ToBasket</a>
                                     @if (item.Likes != null)
                                     {
                                         @*
-                                            <a class="btn" asp-action="GetLike" asp-route-id="@item.ItemID">
-                                                 <img src="~/Files/Heart.png" width="100" height="70" alt="@item.Likes.Count"><img />
-                                            </a>
+            <a class="btn" asp-action="GetLike" asp-route-id="@item.ItemID">
+                 <img src="~/Files/Heart.png" width="100" height="70" alt="@item.Likes.Count"><img />
+            </a>
                                         *@
                                         <a class="btn btn-sm btn-primary" asp-action="GetLike" asp-route-id="@item.ItemID">@item.Likes.Count</a>
                                     }
