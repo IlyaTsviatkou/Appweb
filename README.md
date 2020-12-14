@@ -1,3 +1,2 @@
 # Appweb
-
-https://ezappweb.azurewebsites.net
+https://happyshop.azurewebsites.net/
